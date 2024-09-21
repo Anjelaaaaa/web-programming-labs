@@ -57,7 +57,8 @@ def counter():
 <!doctype html>
 <html>
     <body>
-        Сколько раз вы сюда заходили: ''' + str(count) + '''
+        Сколько раз вы сюда заходили: ''' + str(count) + '''<br>
+        <a href="/lab1/counter_clean">Очистить счетчик</a>
     </body>
 </html>'''
 
@@ -80,3 +81,9 @@ def created():
 @app.errorhandler(404)
 def not_found(err):
     return "нет такой страницы", 404
+
+@app.route("/lab1/counter_clean")
+def counter_clean():
+    global count
+    count = 0
+    return redirect("/lab1/counter")
