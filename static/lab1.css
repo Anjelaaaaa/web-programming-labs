@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(225, 255, 228);
+    color: rgb(85, 128, 29);
+    font-family: Arial;
+    margin: 50px;
+}
+h1 {
+    text-align: center;
+}
+img {
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgb(100, 128, 73);
+}
+div {
+    text-align: center;
+}
