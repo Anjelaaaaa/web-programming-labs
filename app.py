@@ -116,6 +116,7 @@ def index():
     </body>
 </html>
 '''
+
 @app.route("/lab1")
 def lab1():
     return '''
@@ -140,3 +141,69 @@ def lab1():
     </body>
 </html>
 '''
+
+@app.route("/lab1/error400")
+def error400():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>Bad Request</h1>
+    </body>
+</html>
+''', 400
+
+@app.route("/lab1/error401")
+def error401():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>Unauthorized</h1>
+    </body>
+</html>
+''', 401
+
+@app.route("/lab1/error402")
+def error402():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>Payment Required</h1>
+    </body>
+</html>
+''', 402
+
+@app.route("/lab1/error403")
+def error403():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>Forbidden</h1>
+    </body>
+</html>
+''', 403
+
+@app.route("/lab1/error405")
+def error405():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>Method Not Allowed</h1>
+    </body>
+</html>
+''', 405
+
+@app.route("/lab1/error418")
+def error418():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>I'm a teapot</h1>
+    </body>
+</html>
+''', 418
