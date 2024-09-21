@@ -7,7 +7,7 @@ def web():
         <html>
            <body>
                <h1>web-сервер на flask</h1>
-               <a href="/author">author</a>
+               <a href="lab1/author">author</a>
            </body>
         </html>""", 200, {
             "X-Server": "sample",
@@ -26,7 +26,7 @@ def author():
                <p>Студент: """ + name + """</p>
                <p>Группа: """ + group + """</p>
                <p>Факультет: """ + faculty + """</p>
-               <a href="/web">web</a>
+               <a href="/lab1/web">web</a>
            </body>
         </html>"""
 
@@ -87,3 +87,32 @@ def counter_clean():
     global count
     count = 0
     return redirect("/lab1/counter")
+
+@app.route("/")
+@app.route("/index")
+def index():
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>НГТУ, ФБ, Лабораторные работы</title>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных
+        </header>
+
+        <main>
+            <ol>
+                <li>
+                    <a href="/lab1">Первая лабораторная</a>
+                </li>
+            </ol>
+        </main>
+
+        <footer>
+            &copy;Оноприенко Анжелика Андреевна, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
+'''
