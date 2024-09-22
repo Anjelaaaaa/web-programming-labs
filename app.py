@@ -80,7 +80,27 @@ def created():
 
 @app.errorhandler(404)
 def not_found(err):
-    return "нет такой страницы", 404
+    style = url_for("static", filename="error404.css")
+    path = url_for("static", filename="sad.webp")
+    path1 = url_for("static", filename="bingo.webp")
+    path2 = url_for("static", filename="disgust.jpg")
+    return '''
+<!doctype html>
+<html>
+<head>
+    <title>Not Found</title>
+    <link rel="stylesheet" href="''' + style + '''">
+</head>
+    <body>
+        <img class="c" src="''' + path2 + '''">
+        <h1><span class="e">4</span><span class="d">0</span>4</h1>
+        <h2>Ошибка</h2>
+        <div class="a"><img class="a" src="''' + path + '''"></div>
+        <h3>Такой старницы у нас нет, но есть другие!</h3>
+        <div class="b"><img class="b" src="''' + path1 + '''"></div>
+    </body>
+</html>
+''', 404
 
 @app.route("/lab1/counter_clean")
 def counter_clean():
