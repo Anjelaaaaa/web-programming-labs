@@ -227,3 +227,39 @@ def error418():
     </body>
 </html>
 ''', 418
+
+@app.route("/lab1/error500")
+def error500():
+    number = 500
+    return '''
+<!DOCTYPE html>
+<html lang="ru">
+    <body>
+        <h1>Ошибка ''' + number + '''</h1>
+    </body>
+</html>
+'''
+
+@app.errorhandler(500)
+def internal_server_error(err):
+    style = url_for("static", filename="error500.css")
+    path = url_for("static", filename="simka.png")
+    path1 = url_for("static", filename="nolik.png")
+    path2 = url_for("static", filename="masya.png")
+    return '''
+<!doctype html>
+<html>
+<head>
+    <title>Internal Server Error</title>
+    <link rel="stylesheet" href="''' + style + '''">
+</head>
+    <body>
+        <img class="a" src="''' + path + '''">
+        <img class="b" src="''' + path1 + '''">
+        <img class="c" src="''' + path2 + '''">
+        <h1><span class="e">5</span><span class="d">0</span>0</h1>
+        <h2>Ошибка</h2>
+        <h3>На нашем сервере произошла небольшая ошибка, вскоре она будет исправлена, мы уже работаем над ней!</h3>
+    </body>
+</html>
+''', 500
