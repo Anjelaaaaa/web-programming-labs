@@ -157,6 +157,59 @@ def lab1():
             </div>
 
             <a href="/">Список лабораторных</a>
+
+            <h2>Список роутов</h2>
+
+            <ul>
+                <li>
+                    <a href="/lab1/web">Веб</a>
+                </li>
+                <li>
+                    <a href="/lab1/author">Автор</a>
+                </li>
+                <li>
+                    <a href="/lab1/oak">Дуб</a>
+                </li>
+                <li>
+                    <a href="/lab1/counter">Счетчик</a>
+                </li>
+                <li>
+                    <a href="/lab1/info">Информация</a>
+                </li>
+                <li>
+                    <a href="/lab1/created">Код 201</a>
+                </li>
+                <li>
+                    <a href="/lab1/error404">Ошибка 404</a>
+                </li>
+                <li>
+                    <a href="/lab1/counter_clean">Очистка счетчика</a>
+                </li>
+                <li>
+                    <a href="/lab1/error400">Ошибка 400</a>
+                </li>
+                <li>
+                    <a href="/lab1/error401">Ошибка 401</a>
+                </li>
+                <li>
+                    <a href="/lab1/error402">Ошибка 402</a>
+                </li>
+                <li>
+                    <a href="/lab1/error403">Ошибка 403</a>
+                </li>
+                <li>
+                    <a href="/lab1/error405">Ошибка 405</a>
+                </li>
+                <li>
+                    <a href="/lab1/error418">Ошибка 418</a>
+                </li>
+                <li>
+                    <a href="/lab1/error500">Ошибка 500</a>
+                </li>
+                <li>
+                    <a href="/lab1/text">Текст</a>
+                </li>
+            </ul>
         </main>
     </body>
 </html>
