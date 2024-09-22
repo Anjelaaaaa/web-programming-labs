@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+    font-family: Arial;
+    margin: 0 20% 0 20%;
+}
+div {
+    margin: 30px;
+    text-align: left;
+}
