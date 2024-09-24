@@ -3,32 +3,38 @@ app = Flask(__name__)
 
 @app.route("/lab1/web")
 def web():
-    return """<!doctype html>
+    return '''<!doctype html>
         <html>
            <body>
                <h1>web-сервер на flask</h1>
                <a href="lab1/author">author</a>
            </body>
-        </html>""", 200, {
+        </html>''', 200, {
             "X-Server": "sample",
             "Content-Type": "text/plane; charset=utf-8"
         }
 
 @app.route("/lab1/author")
 def author():
+    style = url_for("static", filename="main.css")
     name = "Оноприенко Анжелика Андреевна"
     group = "ФБИ-21"
     faculty = "ФБ"
-
-    return """<!doctype html>
+    return '''<!doctype html>
         <html>
-           <body>
-               <p>Студент: """ + name + """</p>
-               <p>Группа: """ + group + """</p>
-               <p>Факультет: """ + faculty + """</p>
-               <a href="/lab1/web">web</a>
-           </body>
-        </html>"""
+            <head>
+                <title>Автор</title>
+                <link rel="stylesheet" href="''' + style + '''">
+            </head>
+            <body>
+                <div class="menu">
+                    <p>Студент: ''' + name + '''</p>
+                    <p>Группа: ''' + group + '''</p>
+                    <p>Факультет: ''' + faculty + '''</p>
+                    <a href="/lab1/web">web</a>
+                </div>
+            </body>
+        </html>'''
 
 @app.route("/lab1/oak")
 def oak():
@@ -37,10 +43,10 @@ def oak():
     return '''
 <!doctype html>
 <html>
-<head>
-    <title>Дуб</title>
-    <link rel="stylesheet" href="''' + style + '''">
-</head>
+    <head>
+        <title>Дуб</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
     <body>
         <h1>Дуб</h1>
         <div><img src="''' + path + '''"></div>
@@ -51,14 +57,21 @@ count = 0
 
 @app.route("/lab1/counter")
 def counter():
+    style = url_for("static", filename="main.css")
     global count
     count +=1
     return '''
 <!doctype html>
 <html>
+    <head>
+        <title>Счетчик</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
     <body>
-        Сколько раз вы сюда заходили: ''' + str(count) + '''<br>
-        <a href="/lab1/counter_clean">Очистить счетчик</a>
+        <div class="counter">
+            Сколько раз вы сюда заходили: ''' + str(count) + '''<br>
+            <a href="/lab1/counter_clean">Очистить счетчик</a>
+        </div>
     </body>
 </html>'''
 
@@ -66,17 +79,111 @@ def counter():
 def info():
     return redirect("/lab1/author")
 
+resource = False
+
 @app.route("/lab1/created")
 def created():
-    return '''
+    path = url_for("static", filename="jenga.webp")
+    style = url_for("static", filename="main.css")
+    global resource
+    if resource:
+        return '''
 <!doctype html>
 <html>
+    <head>
+        <title>Постройка башни</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
     <body>
-        <h1>Создано успешно</h1>
-        <div><i>что-то создано...</i></div>
+        <h1 class="resource">Отказано: башня уже построена</h1>
+        <div class="tower"><img class="tower" src="''' + path + '''"></div>
+    </body>
+</html>
+''', 400
+    else:
+        resource = True
+        return '''
+<!doctype html>
+<html>
+    <head>
+        <title>Постройка башни</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
+    <body>
+        <h1 class="resource">Успешно: башня построена</h1>
+        <div class="tower"><img class="tower" src="''' + path + '''"></div>
     </body>
 </html>
 ''', 201
+
+@app.route("/lab1/delete")
+def delete():
+    path = url_for("static", filename="jengabroke.jpg")
+    style = url_for("static", filename="main.css")
+    global resource
+    if resource:
+        resource = False
+        return '''
+<!doctype html>
+<html>
+    <head>
+        <title>Разрушение башни</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
+    <body>
+        <h1 class="resource">Успешно: башня разрушена</h1>
+        <div class="tower"><img class="tower" src="''' + path + '''"></div>
+    </body>
+    </body>
+</html>
+''', 200
+    else:
+        return '''
+<!doctype html>
+<html>
+    <head>
+        <title>Разрушение башни</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
+    <body>
+        <h1 class="resource">Отказано: башня еще не построена</h1>
+    </body>
+    </body>
+</html>
+''', 400
+
+@app.route("/lab1/resource")
+def resource_status():
+    style = url_for("static", filename="main.css")
+    if resource:
+        status = "Башня построена"
+    else:
+        status = "Башня еще не построена"
+    return '''
+<!doctype html>
+<html>
+    <head>
+        <title>Статус постройки</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
+    <body>
+        <h1 class="resource">''' + status + '''</h1>
+        <div class="resource">
+            <a href="/lab1/status">Обновить статус</a><br>
+        </div>
+        <div class="resource">
+            <a href="/lab1/created">Построить башню</a><br>
+        </div>
+        <div class="resource">
+            <a href="/lab1/delete">Разрушить башню</a>
+        </div>
+    </body>
+</html>
+'''
+
+@app.route("/lab1/status")
+def update_status():
+    return redirect("/lab1/resource")
 
 @app.errorhandler(404)
 def not_found(err):
@@ -87,16 +194,16 @@ def not_found(err):
     return '''
 <!doctype html>
 <html>
-<head>
-    <title>Not Found</title>
-    <link rel="stylesheet" href="''' + style + '''">
-</head>
+    <head>
+        <title>Not Found</title>
+        <link rel="stylesheet" href="''' + style + '''">
+    </head>
     <body>
         <img class="c" src="''' + path2 + '''">
         <h1><span class="e">4</span><span class="d">0</span>4</h1>
         <h2>Ошибка</h2>
         <div class="a"><img class="a" src="''' + path + '''"></div>
-        <h3>Такой старницы у нас нет, но есть другие!</h3>
+        <h3>Такой страницы у нас нет, но есть другие!</h3>
         <div class="b"><img class="b" src="''' + path1 + '''"></div>
     </body>
 </html>
@@ -111,10 +218,12 @@ def counter_clean():
 @app.route("/")
 @app.route("/index")
 def index():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
     <head>
+        <link rel="stylesheet" href="''' + style + '''">
         <title>НГТУ, ФБ, Лабораторные работы</title>
     </head>
     <body>
@@ -123,11 +232,13 @@ def index():
         </header>
 
         <main>
-            <ol>
-                <li>
-                    <a href="/lab1">Первая лабораторная</a>
-                </li>
-            </ol>
+            <div class="spisok">
+                <ol>
+                    <li>
+                        <a href="/lab1">Первая лабораторная</a>
+                    </li>
+                </ol>
+            </div>
         </main>
 
         <footer>
@@ -139,16 +250,18 @@ def index():
 
 @app.route("/lab1")
 def lab1():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
     <head>
+        <link rel="stylesheet" href="''' + style + '''">
         <title>Лабораторная 1</title>
     </head>
     <body>
         <main>
             <div>
-                Flask &mdash; фреймворк для создания веб-приложений на языке
+                <h2 class="flask">Flask</h2> &mdash; фреймворк для создания веб-приложений на языке
                 программирования Python, использующий набор инструментов
                 Werkzeug, а также шаблонизатор Jinja2. Относится к категории так
                 называемых микрофреймворков &mdash; минималистичных каркасов
@@ -156,60 +269,73 @@ def lab1():
                 возможности.
             </div>
 
-            <a href="/">Список лабораторных</a>
+            <div class="list">
+                <a href="/">Список лабораторных</a>
+            </div>
 
-            <h2>Список роутов</h2>
+            <div class="list">
+                <h2 class="flask">Список роутов</h2>
 
-            <ul>
-                <li>
-                    <a href="/lab1/web">Веб</a>
-                </li>
-                <li>
-                    <a href="/lab1/author">Автор</a>
-                </li>
-                <li>
-                    <a href="/lab1/oak">Дуб</a>
-                </li>
-                <li>
-                    <a href="/lab1/counter">Счетчик</a>
-                </li>
-                <li>
-                    <a href="/lab1/info">Информация</a>
-                </li>
-                <li>
-                    <a href="/lab1/created">Код 201</a>
-                </li>
-                <li>
-                    <a href="/lab1/error404">Ошибка 404</a>
-                </li>
-                <li>
-                    <a href="/lab1/counter_clean">Очистка счетчика</a>
-                </li>
-                <li>
-                    <a href="/lab1/error400">Ошибка 400</a>
-                </li>
-                <li>
-                    <a href="/lab1/error401">Ошибка 401</a>
-                </li>
-                <li>
-                    <a href="/lab1/error402">Ошибка 402</a>
-                </li>
-                <li>
-                    <a href="/lab1/error403">Ошибка 403</a>
-                </li>
-                <li>
-                    <a href="/lab1/error405">Ошибка 405</a>
-                </li>
-                <li>
-                    <a href="/lab1/error418">Ошибка 418</a>
-                </li>
-                <li>
-                    <a href="/lab1/error500">Ошибка 500</a>
-                </li>
-                <li>
-                    <a href="/lab1/text">Текст</a>
-                </li>
-            </ul>
+                <ul>
+                    <li>
+                        <a href="/lab1/web">Веб</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/author">Автор</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/oak">Дуб</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/counter">Счетчик</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/info">Информация</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/created">Постройка башни</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error404">Ошибка 404</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/counter_clean">Очистка счетчика</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error400">Ошибка 400</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error401">Ошибка 401</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error402">Ошибка 402</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error403">Ошибка 403</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error405">Ошибка 405</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error418">Ошибка 418</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/error500">Ошибка 500</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/text">Текст</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/delete">Разрушение башни</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/resource">Статус постройки</a>
+                    </li>
+                    <li>
+                        <a href="/lab1/status">Обновление статуса постройки</a>
+                    </li>
+                </ul>
+            </div>
         </main>
     </body>
 </html>
@@ -217,66 +343,96 @@ def lab1():
 
 @app.route("/lab1/error400")
 def error400():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <link rel="stylesheet" href="''' + style + '''">
+        <title>Bad Request</title>
+    </head>
     <body>
-        <h1>Bad Request</h1>
+        <h1 class="error400">Bad Request</h1>
     </body>
 </html>
 ''', 400
 
 @app.route("/lab1/error401")
 def error401():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <link rel="stylesheet" href="''' + style + '''">
+        <title>Unauthorized</title>
+    </head>
     <body>
-        <h1>Unauthorized</h1>
+        <h1 class="error401">Unauthorized</h1>
     </body>
 </html>
 ''', 401
 
 @app.route("/lab1/error402")
 def error402():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <link rel="stylesheet" href="''' + style + '''">
+        <title>Payment Required</title>
+    </head>
     <body>
-        <h1>Payment Required</h1>
+        <h1 class="error402">Payment Required</h1>
     </body>
 </html>
 ''', 402
 
 @app.route("/lab1/error403")
 def error403():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <link rel="stylesheet" href="''' + style + '''">
+        <title>Forbidden</title>
+    </head>
     <body>
-        <h1>Forbidden</h1>
+        <h1 class="error403">Forbidden</h1>
     </body>
 </html>
 ''', 403
 
 @app.route("/lab1/error405")
 def error405():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <link rel="stylesheet" href="''' + style + '''">
+        <title>Method Not Allowed</title>
+    </head>
     <body>
-        <h1>Method Not Allowed</h1>
+        <h1 class="error405">Method Not Allowed</h1>
     </body>
 </html>
 ''', 405
 
 @app.route("/lab1/error418")
 def error418():
+    style = url_for("static", filename="main.css")
     return '''
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <link rel="stylesheet" href="''' + style + '''">
+        <title>I'm a teapot</title>
+    </head>
     <body>
-        <h1>I'm a teapot</h1>
+        <h1 class="error418">I'm a teapot</h1>
     </body>
 </html>
 ''', 418

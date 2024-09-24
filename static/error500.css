@@ -1,6 +1,5 @@
 h1 {
     font-size: 300px;
-    text-shadow: 10px 10px rgba(187, 144, 161, 0.527);
     text-shadow: 
     1px 9px rgba(194, 160, 173, 0.527),
     1px 10px rgba(194, 160, 173, 0.527),
@@ -14,7 +13,6 @@ h1 {
     position: relative;
 }
 .d {
-    text-shadow: 10px 10px rgba(187, 144, 161, 0.527);
     text-shadow: 
     1px 9px rgba(194, 179, 160, 0.527),
     1px 10px rgba(194, 179, 160, 0.527),
@@ -25,7 +23,6 @@ h1 {
     color: rgb(230, 206, 129);
 }
 .e {
-    text-shadow: 10px 10px rgba(187, 144, 161, 0.527);
     text-shadow: 
     1px 9px rgba(160, 166, 194, 0.527),
     1px 10px rgba(160, 166, 194, 0.527),
@@ -44,7 +41,7 @@ h3 {
 }
 body {
     background-color: rgb(216, 231, 250);
-    font-family: "Inter", sans-serif;
+    font-family: sans-serif;
     text-align: center;
 }
 .a {

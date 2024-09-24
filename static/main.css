@@ -1,0 +1,207 @@
+body {
+    font-family: sans-serif;
+    line-height: 22px;
+    color: rgb(80, 80, 80);
+}
+main {
+    margin: 0 20% 0 20%;
+}
+footer {
+    background-color:rgba(163, 163, 163, 0.247);
+    padding: 8px;
+    font-size: 12pt;
+    font-style: italic;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+header {
+    background-color:rgba(163, 163, 163, 0.247);
+    padding: 10px;
+    font-size: 16pt;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+div {
+    margin: 30px 0 30px 0;
+}
+a {
+    text-decoration: none;
+    transition: 0.1s;
+}
+a:link {
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+a:visited {
+    color: rgb(104, 109, 177);
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(97, 193, 231);
+    text-decoration: underline;
+    text-shadow: 0 0 2px rgba(131, 200, 240, 0.671);
+    border-radius: 7px;
+    transition: 0.1s;
+    padding: 1px;
+}
+a:active {
+    color: black;
+    opacity: 0.7;
+}
+div.menu {
+    background-color: rgb(238, 220, 255);
+    box-shadow: 5px 5px 15px rgba(75, 75, 75, 0.568);
+    border-radius: 20px;
+    width: 400px;
+    margin: 50px auto;
+    padding: 10px;
+    text-align: center;
+}
+div.menu:hover {
+    background-color: rgba(216, 221, 252, 0.808);
+}
+div.list {
+    background-color: rgb(248, 217, 230);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    width: 500px;
+    margin: 30px auto;
+}
+h2.flask {
+    color: rgb(177, 89, 147);
+}
+div.resource {
+    background-color: rgb(213, 232, 250);
+    border-radius: 20px;
+    height: 60px;
+    width: 250px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 25px auto;
+    line-height: 60px;
+    box-shadow: 5px 5px 15px rgba(75, 75, 75, 0.568);
+}
+h1.resource {
+    text-align: center;
+}
+div.counter {
+    background-color: rgb(223, 248, 217);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    width: 500px;
+    margin: 30px auto;
+    text-align: center;
+}
+div.spisok {
+    background-color: rgb(252, 227, 239);
+    border-radius: 20px;
+    margin: 70px auto;
+    width: 350px;
+    padding: 10px;
+}
+div.spisok:hover {
+    box-shadow: 0 0 15px rgba(245, 115, 178, 0.671);
+}
+div.tower {
+    text-align: center;
+}
+img.tower {
+    width: 600px;
+}
+h1.error400 {
+    text-align: center;
+    font-size: 100px;
+    text-shadow:
+    1px 2px rgba(167, 194, 160, 0.527),
+    1px 3px rgba(167, 194, 160, 0.527), 
+    1px 4px rgba(167, 194, 160, 0.527),
+    1px 5px rgba(167, 194, 160, 0.527),
+    1px 6px rgba(167, 194, 160, 0.527),
+    1px 7px rgba(167, 194, 160, 0.527),
+    1px 8px 6px rgba(145, 173, 129, 0.527),
+    1px 10px 10px rgba(145, 173, 129, 0.527),
+    1px 12px 30px rgba(145, 173, 129, 0.527);
+    color: rgb(191, 250, 164);
+}
+h1.error401 {
+    text-align: center;
+    font-size: 100px;
+    text-shadow:
+    1px 2px rgba(194, 193, 160, 0.527),
+    1px 3px rgba(194, 193, 160, 0.527), 
+    1px 4px rgba(194, 193, 160, 0.527),
+    1px 5px rgba(194, 193, 160, 0.527),
+    1px 6px rgba(194, 193, 160, 0.527),
+    1px 7px rgba(194, 193, 160, 0.527),
+    1px 8px 6px rgba(173, 166, 129, 0.527),
+    1px 10px 10px rgba(173, 166, 129, 0.527),
+    1px 12px 30px rgba(173, 166, 129, 0.527);
+    color: rgb(250, 241, 164);
+}
+h1.error402 {
+    text-align: center;
+    font-size: 100px;
+    text-shadow:
+    1px 2px rgba(160, 187, 194, 0.527),
+    1px 3px rgba(160, 187, 194, 0.527), 
+    1px 4px rgba(160, 187, 194, 0.527),
+    1px 5px rgba(160, 187, 194, 0.527),
+    1px 6px rgba(160, 187, 194, 0.527),
+    1px 7px rgba(160, 187, 194, 0.527),
+    1px 8px 6px rgba(129, 159, 173, 0.527),
+    1px 10px 10px rgba(129, 159, 173, 0.527),
+    1px 12px 30px rgba(129, 159, 173, 0.527);
+    color: rgb(164, 230, 250);
+}
+h1.error403 {
+    text-align: center;
+    font-size: 100px;
+    text-shadow:
+    1px 2px rgba(160, 161, 194, 0.527),
+    1px 3px rgba(160, 161, 194, 0.527), 
+    1px 4px rgba(160, 161, 194, 0.527),
+    1px 5px rgba(160, 161, 194, 0.527),
+    1px 6px rgba(160, 161, 194, 0.527),
+    1px 7px rgba(160, 161, 194, 0.527),
+    1px 8px 6px rgba(129, 132, 173, 0.527),
+    1px 10px 10px rgba(129, 132, 173, 0.527),
+    1px 12px 30px rgba(129, 132, 173, 0.527);
+    color: rgb(176, 186, 245);
+}
+h1.error405 {
+    text-align: center;
+    font-size: 100px;
+    text-shadow:
+    1px 2px rgba(194, 160, 192, 0.527),
+    1px 3px rgba(194, 160, 192, 0.527), 
+    1px 4px rgba(194, 160, 192, 0.527),
+    1px 5px rgba(194, 160, 192, 0.527),
+    1px 6px rgba(194, 160, 192, 0.527),
+    1px 7px rgba(194, 160, 192, 0.527),
+    1px 8px 6px rgba(173, 129, 171, 0.527),
+    1px 10px 10px rgba(173, 129, 171, 0.527),
+    1px 12px 30px rgba(173, 129, 171, 0.527);
+    color: rgb(238, 187, 230);
+}
+h1.error418 {
+    text-align: center;
+    font-size: 100px;
+    text-shadow:
+    1px 2px rgba(194, 167, 160, 0.527),
+    1px 3px rgba(194, 167, 160, 0.527), 
+    1px 4px rgba(194, 167, 160, 0.527),
+    1px 5px rgba(194, 167, 160, 0.527),
+    1px 6px rgba(194, 167, 160, 0.527),
+    1px 7px rgba(194, 167, 160, 0.527),
+    1px 8px 6px rgba(173, 141, 129, 0.527),
+    1px 10px 10px rgba(173, 141, 129, 0.527),
+    1px 12px 30px rgba(173, 141, 129, 0.527);
+    color: rgb(250, 181, 164);
+}
