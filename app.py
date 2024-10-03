@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect
+from flask import Flask, url_for, redirect, render_template
 app = Flask(__name__)
 
 @app.route("/lab1/web")
@@ -242,7 +242,7 @@ def index():
         </main>
 
         <footer>
-            &copy;Оноприенко Анжелика Андреевна, ФБИ-21, 2 курс, 2024
+            &copy; Оноприенко Анжелика Андреевна, ФБИ-21, 3 курс, 2024
         </footer>
     </body>
 </html>
@@ -593,3 +593,7 @@ def add_flower(name):
     </body>
 </html>
 '''
+
+@app.route("/lab2/example")
+def example():
+    return render_template('example.html')
