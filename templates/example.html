@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анжелика Оноприенко. Лабораторная работа {{number}}</title>
+    <title>
+        {% if name %} 
+            {{name}}.
+        {% else %}
+            Анонимус.
+        {% endif %} 
+        Лабораторная работа {{number}}
+    </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <style>
         div {
-            background-color: rgb(255, 254, 194);
+            background-color: rgb(253, 252, 200);
             width: 300px;
             margin: 80px auto;
             padding: 30px;
@@ -18,7 +25,7 @@
 </head>
 <body>
     <header>
-        WEB-программирование, часть 2. Лабораторная работа {{number}}
+        WEB-программирование, часть 2. {% if number %}Лабораторная работа 2{% endif %}
     </header>
     
     <main>
@@ -32,7 +39,23 @@
     </main>
 
     <footer>
-        &copy; {{name}}, ФБИ-{{group}}, {{course}} курс, 2024
+        &copy;
+        {% if name %} 
+            {{name}},
+        {% else %}
+            Анонимус,
+        {% endif %}
+        {% if group %} 
+            {{group}},
+        {% else %}
+            Забыл с кем учился,
+        {% endif %}
+        {% if course %} 
+            {{course}},
+        {% else %}
+            Не помнит сколько учился,
+        {% endif %}
+        2024
     </footer>
 </body>
 </html>
