@@ -216,3 +216,11 @@ h1.error418 {
     1px 12px 30px rgba(173, 141, 129, 0.527);
     color: rgb(250, 181, 164);
 }
+div.phrase {
+    background-color: rgb(219, 227, 255);
+    width: 550px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    margin: auto;
+}
