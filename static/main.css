@@ -26,7 +26,7 @@ header {
     border-radius: 15px;
 }
 div {
-    margin: 70px 0 50px 0;
+    margin: 30px 0 30px 0;
 }
 a {
     text-decoration: none;
@@ -64,16 +64,28 @@ div.menu {
 div.menu:hover {
     background-color: rgba(216, 221, 252, 0.808);
 }
-div.list {
+.list {
     background-color: rgb(248, 217, 230);
-    padding: 30px;
     border-radius: 20px;
     box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
     width: 500px;
     margin: 30px auto;
 }
-h2.flask {
+.lab1 {
+    padding: 30px;
+}
+.lab2 {
+    background-color: rgb(221, 248, 217);
+    padding: 10px;
+}
+div.center {
+    text-align: center;
+}
+.header1 {
     color: rgb(177, 89, 147);
+}
+.header2 {
+    color: rgb(136, 177, 89);
 }
 div.resource {
     background-color: rgb(213, 232, 250);

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  Лабораторная работа 2 {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+    <div class="center">
+        <h1 class="header2">Шаблоны</h1>
+        Тема лабораторной работы - шаблоны. Список сделанных страниц:
+    </div>
+    <div class="list lab2">  
+        <ol>
+            <li>
+                <a href="/lab2/example">Example</a>
+            </li>
+        </ol>
+    </div>
+{% endblock %}

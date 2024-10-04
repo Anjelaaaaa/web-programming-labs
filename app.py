@@ -261,7 +261,7 @@ def lab1():
     <body>
         <main>
             <div>
-                <h2 class="flask">Flask</h2> &mdash; фреймворк для создания веб-приложений на языке
+                <h2 class="header1">Flask</h2> &mdash; фреймворк для создания веб-приложений на языке
                 программирования Python, использующий набор инструментов
                 Werkzeug, а также шаблонизатор Jinja2. Относится к категории так
                 называемых микрофреймворков &mdash; минималистичных каркасов
@@ -269,12 +269,12 @@ def lab1():
                 возможности.
             </div>
 
-            <div class="list">
+            <div class="list lab1">
                 <a href="/">Список лабораторных</a>
             </div>
 
-            <div class="list">
-                <h2 class="flask">Список роутов</h2>
+            <div class="list lab1">
+                <h2 class="header1">Список роутов</h2>
 
                 <ul>
                     <li>
@@ -608,3 +608,7 @@ def example():
         {'name':'манго', 'price': 321}
     ]
     return render_template('example.html', number=number, name=name, group=group, course=course, fruits=fruits)
+
+@app.route("/lab2/")
+def lab2():
+    return render_template('lab2.html')
