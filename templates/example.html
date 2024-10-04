@@ -16,7 +16,7 @@
         div {
             background-color: rgb(253, 252, 200);
             width: 300px;
-            margin: 80px auto;
+            margin: 30px auto;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
@@ -35,6 +35,13 @@
             3258 - 759 = {{ 3258 - 759 }}<br>
             8452 / 793 = {{ 8452 / 793 }}<br>
             45<sup>8</sup> = {{ 45 ** 8 }}
+        </div>
+        <div>
+            <ul>
+                {% for f in fruits %}
+                <li>{{loop.index}} - {{f.name}}: {{f.price}} &#x20bd;</li>
+                {% endfor %}
+            </ul>
         </div>
     </main>
 

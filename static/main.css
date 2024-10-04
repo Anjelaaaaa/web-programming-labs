@@ -13,6 +13,7 @@ footer {
     font-style: italic;
     text-align: right;
     position: fixed;
+    border-radius: 15px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -21,11 +22,8 @@ header {
     background-color:rgba(163, 163, 163, 0.247);
     padding: 10px;
     font-size: 16pt;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
+    border-radius: 15px;
 }
 div {
     margin: 70px 0 50px 0;
