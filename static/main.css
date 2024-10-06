@@ -248,3 +248,14 @@ div.phrase {
     border-radius: 20px;
     box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
 }
+.books {
+    background-color: rgb(222, 219, 253);
+    width: 700px;
+    border-radius: 20px;
+    margin: 30px auto;
+    padding: 30px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+}
+.book {
+    margin: 12px;
+}
