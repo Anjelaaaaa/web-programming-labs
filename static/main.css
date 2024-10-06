@@ -232,3 +232,19 @@ div.phrase {
 .newflower {
     color: rgb(148, 155, 245);
 }
+.calc {
+    background-color: rgb(253, 252, 200);
+    width: 300px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+}
+.calc1 {
+    background-color: rgb(212, 255, 217);
+    width: 550px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+}
