@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  Лабораторная работа 2 {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+        {% for b in butterfly %}
+        <div class="center"><img class="butterfly" src="{{ url_for('static', filename=b.image) }}"></div>
+        <h2 class="center butterflyes">{{ b.name }}</h2>
+        <div class="center">{{ b.description }}</div>
+        {% endfor %}
+{% endblock %}
