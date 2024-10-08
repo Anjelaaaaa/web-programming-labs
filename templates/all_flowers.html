@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Цветы</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <script>
+            function flower() {
+                let name = document.getElementById('flower_name').value;
+                let price = document.getElementById('flower_price').value;
+                let link = document.getElementById('add_flower_link');
+                if (name && price) {
+                    link.href = `/lab2/add_flower/${name}/${price}`;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            WEB-программирование, часть 2. Список цветов<a class="mainmenu" href="\">Главное меню</a>
+        </header>
+
+        <main>
+            <div class="list flowers">
+                <h1 class="newflower">Всего цветов: {{ flower_list|length }}</h1>
+                <div>Полный список:</div>
+                <ul>
+                    {% for fl in flower_list %}
+                    <li>
+                        {{ fl.name }}: {{ fl.price }} - 
+                        <a href="/lab2/delete_flower/{{ loop.index0 }}">Удалить цветок</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <input class="inputflower" type="text" id="flower_name" placeholder="Название цветка"><br>
+                <input class="inputflower" type="number" id="flower_price" placeholder="Цена цветка"><br>
+                <a class="flowerlink" onclick="flower()" id="add_flower_link" href="#">Добавить цветок</a><br>
+                <a class="flowerlink" href="/lab2/clean_flowers/">Очистить список</a><br>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Анжелика Оноприенко, ФБИ-21, 3 курс, 2024
+        </footer>
+    </body>
+</html>
