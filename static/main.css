@@ -302,12 +302,15 @@ div.phrase {
     border-radius: 10px;
     padding: 5px;
     border: 1px;
+    color: rgb(83, 83, 83);
 }
 .push {
     border-radius: 10px;
     border: 1px;
     background-color: rgb(179, 214, 243);
     padding: 10px;
+    color: rgb(83, 83, 83);
+    margin-bottom: 20px;
 }
 .welcome {
     color: rgb(145, 151, 155);
@@ -316,4 +319,10 @@ div.phrase {
     background-color: rgb(195, 223, 245);
     border-radius: 7px;
     padding: 5px;
+}
+.error {
+    color: rgb(173, 40, 40);
+}
+.error:hover {
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.329);
 }
