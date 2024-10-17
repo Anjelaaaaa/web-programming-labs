@@ -310,5 +310,10 @@ div.phrase {
     padding: 10px;
 }
 .welcome {
-    color: rgb(142, 157, 167);
+    color: rgb(145, 151, 155);
+}
+.again {
+    background-color: rgb(195, 223, 245);
+    border-radius: 7px;
+    padding: 5px;
 }
