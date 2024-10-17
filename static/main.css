@@ -26,7 +26,7 @@ header {
     border-radius: 15px;
 }
 div {
-    margin: 30px 0 30px 0;
+    margin: 20px 0 20px 0;
 }
 a {
     text-decoration: none;
@@ -93,6 +93,9 @@ div.menu:hover {
 }
 .header3 {
     color: rgb(118, 104, 199);
+}
+.header4 {
+    color: rgb(86, 165, 218);
 }
 div.resource {
     background-color: rgb(213, 232, 250);
@@ -291,4 +294,21 @@ div.phrase {
     padding: 5px;
     border-radius: 10px;
     line-height: 40px;
+}
+.user {
+    background-color: rgb(223, 233, 238);
+}
+.userinfo {
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px;
+}
+.push {
+    border-radius: 10px;
+    border: 1px;
+    background-color: rgb(179, 214, 243);
+    padding: 10px;
+}
+.welcome {
+    color: rgb(142, 157, 167);
 }
