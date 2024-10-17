@@ -78,6 +78,10 @@ div.menu:hover {
     background-color: rgb(221, 248, 217);
     padding: 10px;
 }
+.lab3 {
+    background-color: rgb(220, 217, 248);
+    padding: 10px;
+}
 .center {
     text-align: center;
 }
@@ -86,6 +90,9 @@ div.menu:hover {
 }
 .header2 {
     color: rgb(136, 177, 89);
+}
+.header3 {
+    color: rgb(118, 104, 199);
 }
 div.resource {
     background-color: rgb(213, 232, 250);
