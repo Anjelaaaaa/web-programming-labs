@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  Лабораторная работа 3 {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+    <div class="orderdrink">
+        <h1>Заказ напитка</h1>
+
+        <form action="/lab3/pay">
+
+            <div>Напиток:</div>
+
+            <div class="cup center">
+                <label>
+                    <img class="drink" src="{{ url_for('static', filename='coffee.png') }}"><br>
+                    <input type="radio" value="coffee" name="drink" checked>кофе
+                    <div class="price">120&#x20bd;</div>
+                </label>
+            </div>
+
+            <div class="cup center">
+                <label>
+                    <img class="drink1" src="{{ url_for('static', filename='blacktea.png') }}">
+                    <input type="radio" value="black-tea" name="drink">чёрный чай
+                    <div class="price">80&#x20bd;</div>
+                </label>
+            </div>
+
+            <div class="cup center">
+                <label>
+                    <img class="drink2" src="{{ url_for('static', filename='greentea.png') }}">
+                    <input type="radio" value="green-tea" name="drink">зелёный чай
+                    <div class="price">70&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>Добавки:</div>
+
+            <div class="cup center">
+                <label>
+                    <img class="milk" src="{{ url_for('static', filename='milk.png') }}"><br>
+                    <input type="checkbox" name="milk">молоко
+                    <div class="price">30&#x20bd;</div>
+                </label>
+            </div>
+
+            <div class="sugar center">
+                <label>
+                    <img class="sugar1" src="{{ url_for('static', filename='sugar.png') }}">
+                    <input type="checkbox" name="sugar">сахар
+                    <div class="price">10&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>
+                <button class="order" type="submit">Заказать</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
