@@ -22,43 +22,43 @@ flower_list = [
 @lab2.route("/lab2/flowers/<int:flower_id>")
 def flowers(flower_id):
     if flower_id >= len(flower_list):
-        return render_template('flower_id404.html'), 404
+        return render_template('lab2/flower_id404.html'), 404
     else:
-        return render_template('flower_id.html', flower_id=flower_id, flower_list=flower_list)
+        return render_template('lab2/flower_id.html', flower_id=flower_id, flower_list=flower_list)
 
 
 @lab2.route("/lab2/add_flower/<name>/<int:price>")
 def add_flower(name, price):
-    flower_list.lab2end({'name': name, 'price': price})
-    return render_template('add_flower.html', name=name, price=price, flower_list=flower_list)
+    flower_list.append({'name': name, 'price': price})
+    return render_template('lab2/add_flower.html', name=name, price=price, flower_list=flower_list)
 
 
 @lab2.route("/lab2/add_flower/<name>")
 def add_flower_noprice(name):
-    return render_template('add_flower_noprice.html'), 400
+    return render_template('lab2/add_flower_noprice.html'), 400
 
 
 @lab2.route("/lab2/add_flower/")
 def flower():
-    return render_template('add_flower400.html'), 400
+    return render_template('lab2/add_flower400.html'), 400
 
 
 @lab2.route("/lab2/all_flowers/")
 def all_flowers():
-    return render_template('all_flowers.html', flower_list=flower_list)
+    return render_template('lab2/all_flowers.html', flower_list=flower_list)
 
 
 @lab2.route("/lab2/clean_flowers/")
 def clean_flowers():
     global flower_list
     flower_list = []
-    return render_template('clean_flowers.html')
+    return render_template('lab2/clean_flowers.html')
 
 
 @lab2.route("/lab2/delete_flower/<int:flower_id>")
 def delete_flower_id(flower_id):
     if flower_id >= len(flower_list):
-        return render_template('delete_flower_id404.html'), 404
+        return render_template('lab2/delete_flower_id404.html'), 404
     else:
         del flower_list[flower_id]
         return redirect("/lab2/all_flowers/")
@@ -66,7 +66,7 @@ def delete_flower_id(flower_id):
 
 @lab2.route("/lab2/delete_flower/")
 def delete_flower():
-    return render_template('delete_flower.html')
+    return render_template('lab2/delete_flower.html')
 
 
 @lab2.route("/lab2/example")
@@ -82,23 +82,23 @@ def example():
         {'name':'мандарины', 'price': 95},
         {'name':'манго', 'price': 321}
     ]
-    return render_template('example.html', number=number, name=name, group=group, course=course, fruits=fruits)
+    return render_template('lab2/example.html', number=number, name=name, group=group, course=course, fruits=fruits)
 
 
 @lab2.route("/lab2/")
 def lab():
-    return render_template('lab2.html')
+    return render_template('lab2/lab2.html')
 
 
 @lab2.route("/lab2/filters")
 def filters():
     phrase = "О <b>сколько</b> <u>нам</u> <i>открытий</i> чудных..."
-    return render_template('filter.html', phrase=phrase)
+    return render_template('lab2/filter.html', phrase=phrase)
 
 
 @lab2.route("/lab2/calc/<int:a>/<int:b>")
 def calc(a,b):
-    return render_template('calc.html', a=a, b=b)
+    return render_template('lab2/calc.html', a=a, b=b)
 
 
 @lab2.route("/lab2/calc/")
@@ -125,7 +125,7 @@ def books():
         {'author':'Рэй Брэдбери', 'title':'"Улыбка"', 'genre':'фантастика', 'pages':100},
         {'author':'Чарльз Диккенс', 'title':'"Приключения Оливера Твиста"', 'genre':'роман', 'pages':544}
     ]
-    return render_template('books.html', books=books)
+    return render_template('lab2/books.html', books=books)
 
 
 @lab2.route("/lab2/butterfly")
@@ -133,39 +133,39 @@ def butterfly():
     butterfly = [
     {
         'name': 'Морфо Пелеида',
-        'image': '1butterfly.png',
+        'image': 'lab2/1butterfly.png',
         'description': 'Бабочка Морфо Пелеида является одним из самых удивительных и красивых существ в живой природе. Известная своей яркой и голубой окраской крыльев, эта бабочка не может не привлечь внимание.'
     },
     {
         'name': 'Парусник Маака',
-        'image': '2butterfly.png',
+        'image': 'lab2/2butterfly.png',
         'description': 'Размах крыльев этой бабочки достигает 14 см. Самцы имеют очень красивую, яркую окраску - верхняя часть крыльев отливает зеленоватым, бирюзовым и голубоватым цветами.'
     },
     {
         'name': 'Золотая птицекрылка',
-        'image': '3butterfly.png',
+        'image': 'lab2/3butterfly.png',
         'description': 'Это одна из самых крупных дневных бабочек, размах крыльев которой достигает 16 см. Передние крылья удлинённые, бархатисто-чёрные со светлыми жилками. Задние крылья ярко-жёлтые с широкой чёрной окантовкой.'
     },
     {
         'name': 'Парусник Палинур',
-        'image': '4butterfly.png',
+        'image': 'lab2/4butterfly.png',
         'description': 'Очаровательная переливающаяся тропическая бабочка, которую иногда называют бабочкой-павлином. Меняют свой цвет от изумрудно-зелёного до бирюзово-голубого.'
     },
     {
         'name': 'Препона Демофон',
-        'image': '5butterfly.png',
+        'image': 'lab2/5butterfly.png',
         'description': 'Уникальность этой крылатки в ее черных крыльях с синими и голубыми вкраплениями на них. Полет Препона ровный, крылья при этом немного потрескивают.'
     },
     {
         'name': 'Парусник Румянцева',
-        'image': '6butterfly.png',
+        'image': 'lab2/6butterfly.png',
         'description': 'Сверху крылья самцов имеют на черном фоне серое-серебристую пыльцу, а нижние отличаются синевато-серой пыльцой. С обратной стороны присутствуют крупные красновато-розовые отметины.'
     },
     {
         'name': 'Парусник Аскалаф',
-        'image': '7butterfly.png',
+        'image': 'lab2/7butterfly.png',
         'description': 'Размах крыльев 140—160 мм. Доминирующая окраска крыльев чёрная. На наружный поверхности вдоль жилок серебристо-серое напыление. На задних крыльях располагается по одному хвостику длиной 3—7 мм.'
     }
 ]
-    return render_template('butterfly.html', butterfly=butterfly)
+    return render_template('lab2/butterfly.html', butterfly=butterfly)
 

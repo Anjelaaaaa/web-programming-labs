@@ -41,8 +41,8 @@ def author():
 
 @lab1.route("/lab1/oak")
 def oak():
-    path = url_for("static", filename="oak.jpg")
-    style = url_for("static", filename="lab1.css")
+    path = url_for("static", filename="lab1/oak.jpg")
+    style = url_for("static", filename="lab1/lab1.css")
     return '''
 <!doctype html>
 <html>
@@ -89,7 +89,7 @@ resource = False
 
 @lab1.route("/lab1/created")
 def created():
-    path = url_for("static", filename="jenga.webp")
+    path = url_for("static", filename="lab1/jenga.webp")
     style = url_for("static", filename="main.css")
     global resource
     if resource:
@@ -125,7 +125,7 @@ def created():
 
 @lab1.route("/lab1/delete")
 def delete():
-    path = url_for("static", filename="jengabroke.jpg")
+    path = url_for("static", filename="lab1/jengabroke.jpg")
     style = url_for("static", filename="main.css")
     global resource
     if resource:
@@ -413,10 +413,10 @@ def error500():
 
 @lab1.route("/lab1/text")
 def text():
-    style = url_for("static", filename="text.css")
-    path = url_for("static", filename="udav.jpg")
-    path1 = url_for("static", filename="udavoutside.jpg")
-    path2 = url_for("static", filename="udavinside.jpg")
+    style = url_for("static", filename="lab1/text.css")
+    path = url_for("static", filename="lab1/udav.jpg")
+    path1 = url_for("static", filename="lab1/udavoutside.jpg")
+    path2 = url_for("static", filename="lab1/udavinside.jpg")
     return '''
 <!doctype html>
 <html lang="ru">
