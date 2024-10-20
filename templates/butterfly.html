@@ -8,6 +8,6 @@
         {% for b in butterfly %}
         <div class="center"><img class="butterfly" src="{{ url_for('static', filename=b.image) }}"></div>
         <h2 class="center butterflyes">{{ b.name }}</h2>
-        <div class="center">{{ b.description }}</div>
+        <div class="center lineheight">{{ b.description }}</div>
         {% endfor %}
 {% endblock %}

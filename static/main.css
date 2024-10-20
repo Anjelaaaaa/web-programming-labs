@@ -1,6 +1,5 @@
 body {
     font-family: sans-serif;
-    line-height: 22px;
     color: rgb(80, 80, 80);
 }
 main {
@@ -60,6 +59,7 @@ div.menu {
     margin: 50px auto;
     padding: 10px;
     text-align: center;
+    line-height: 22px;
 }
 div.menu:hover {
     background-color: rgba(216, 221, 252, 0.808);
@@ -70,6 +70,7 @@ div.menu:hover {
     width: 500px;
     margin: 30px auto;
     padding: 30px;
+    line-height: 22px;
 }
 .lab1 {
     background-color: rgb(248, 217, 230);
@@ -97,6 +98,9 @@ div.menu:hover {
 .header4 {
     color: rgb(86, 165, 218);
 }
+.flask {
+    line-height: 22px;
+}
 div.resource {
     background-color: rgb(213, 232, 250);
     border-radius: 20px;
@@ -119,6 +123,7 @@ div.counter {
     width: 500px;
     margin: 30px auto;
     text-align: center;
+    line-height: 22px;
 }
 div.spisok {
     background-color: rgb(252, 227, 239);
@@ -126,6 +131,7 @@ div.spisok {
     margin: 70px auto;
     width: 350px;
     padding: 10px;
+    line-height: 22px;
 }
 div.spisok:hover {
     box-shadow: 0 0 15px rgba(245, 115, 178, 0.671);
@@ -250,6 +256,7 @@ div.phrase {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    line-height: 22px;
 }
 .calc1 {
     background-color: rgb(248, 206, 206);
@@ -269,6 +276,10 @@ div.phrase {
     margin: 30px auto;
     padding: 30px;
     box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    line-height: 22px;
+}
+.lineheight {
+    line-height: 22px;
 }
 .book {
     margin: 12px;
@@ -392,4 +403,18 @@ div.phrase {
     margin: 15px auto;
     padding: 5px;
     border-radius: 7px;
+}
+.cookie {
+    border-radius: 10px;
+    border: 1px solid rgb(125, 125, 125);
+    padding: 4px;
+    width: 40px;
+    background-color: rgb(241, 241, 241);
+    margin-top: 5px;
+}
+.OK {
+    border-radius: 13px;
+    border: 1px;
+    padding: 7px;
+    width: 70px;
 }

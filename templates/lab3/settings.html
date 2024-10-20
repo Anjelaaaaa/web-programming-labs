@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #} 
+{% block lab %}  Лабораторная работа 3 {% endblock %} 
+ 
+{# основной контент: #} 
+{% block main %}
+    <div class="list center">
+        <h1>Cookies</h1> 
+    
+        <form method="POST"> 
+            <div> 
+                <label class="label" for="color">Выберите цвет текста:</label> 
+                <input type="color" name="color" id="color" value="{{ color or '' }}"> 
+            </div> 
+    
+            <div> 
+                <label class="label" for="backgroundcolor">Выберите цвет фона:</label> 
+                <input type="color" name="backgroundcolor" id="backgroundcolor" value="{{ backgroundcolor or '' }}"> 
+            </div>
+            
+            <div> 
+                <label class="label" for="fontsize">Выберите размер шрифта:</label> 
+                <input class="cookie" type="number" name="fontsize" id="fontsize" value="{{ fontsize or '' }}"> 
+            </div> 
+
+            <div> 
+                <label class="label" for="headerfooter">Выберите цвет заголовков:</label> 
+                <input type="color" name="headerfooter" id="headerfooter" value="{{ headerfooter or '' }}"> 
+            </div> 
+    
+            <div> 
+                <button class="OK" type="submit">ОК</button> 
+            </div> 
+        </form>
+    </div> 
+{% endblock %}
+
