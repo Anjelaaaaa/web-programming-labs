@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  Лабораторная работа 3 {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+
+    {% if min_price is none or max_price is none %}
+
+        <div class="list games">
+            <h1 class="header6">Список всех игр:</h1>
+            <table>
+                <tr>
+                    <td class="game1"><b>Название игры:</b></td>
+                    <td class="game2"><b>Цена:</b></td>
+                    <td class="game3"><b>Жанр:</b></td>
+                    <td class="game4"><b>Вес:</b></td>
+                </tr>
+                {% for game in filtered_games %}
+                    <tr>
+                        <td>{{ game['name'] }}</td>
+                        <td>{{ game['price'] }}&#x20bd;</td>
+                        <td>{{ game['genre'] }}</td>
+                        <td>{{ game['weight'] }}ГБ</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="list games">
+            <h1 class="header6">Фильтр</h1>
+            <form>
+                <label for="min_price">Минимальная цена:</label>
+                <input class="userinfo minmaxprice" type="number" id="min_price" name="min_price" min="0" max="5000" required><br><br>
+                <label for="max_price">Максимальная цена:</label>
+                <input class="userinfo minmaxprice" type="number" id="max_price" name="max_price" min="0" max="5000" required><br><br>
+                <button class="search OK" type="submit">Искать</button> 
+            </form>
+        </div>
+
+    {% else %}
+
+        {% if error %}
+            <div class="list center">
+                <h1 class="header6 forheader">{{ error }}</h1>
+            </div>
+        {% else %}
+            {% if filtered_games %}
+                <div class="list games1">
+                    <h1 class="header6">Найденные игры:</h1>
+                    <table>
+                        <tr>
+                            <td class="game1"><b>Название игры:</b></td>
+                            <td class="game2"><b>Цена:</b></td>
+                            <td class="game3"><b>Жанр:</b></td>
+                            <td class="game4"><b>Вес:</b></td>
+                        </tr>
+                        {% for game in filtered_games %}
+                            <tr>
+                                <td>{{ game['name'] }}</td>
+                                <td>{{ game['price'] }}&#x20bd;</td>
+                                <td>{{ game['genre'] }}</td>
+                                <td>{{ game['weight'] }}ГБ</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <div class="list">
+                    <h1 class="header6 forheader center">Игры, соответствующие критериям поиска, не найдены</h1>
+                </div>
+            {% endif %}
+
+        {% endif %}
+        
+        <div class="center"><a href="/lab3/games">Вернуться к поиску</a></div>
+    {% endif %}
+
+{% endblock %}

@@ -101,6 +101,9 @@ div.menu:hover {
 .header5 {
     color: rgb(218, 90, 86);
 }
+.header6 {
+    color: rgb(218, 86, 137);
+}
 .forheader {
     line-height: 45px;
 }
@@ -458,6 +461,35 @@ div.phrase {
 }
 .train {
     width: 100px;
-    
 }
+.games {
+    vertical-align: top;
+    margin: 20px;
+    width: 400px;
+    display: inline-block;
+    background-color: rgb(231, 231, 231);
+}
+.games1 {
+    background-color: rgb(231, 231, 231);
+    width: 350px;
+}
+.search{
+    background-color: rgb(252, 165, 195);
+}
+.minmaxprice {
+    border: 1px solid rgb(241, 125, 179);
+}
+.game1 {
+    color: rgb(94, 168, 233);
+}
+.game2 {
+    color: rgb(138, 212, 88);
+    padding: 5px;
 
+}
+.game3 {
+    color: rgb(233, 189, 94);
+}
+.game4 {
+    color: rgb(233, 126, 94);
+}

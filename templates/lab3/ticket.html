@@ -37,7 +37,7 @@
                 </td>
                 <td>
                     <p>Дата: {{ date }}</p>
-                    <p>Страховка: {{ 'со страховкой' if belay == 'withbelay' else 'без страховки' }}</p>
+                    <p>Наличие страховки: {{ 'со страховкой' if belay == 'withbelay' else 'без страховки' }}</p>
                     <img class="train" src="{{ url_for('static', filename='lab3/train.png') }}">
                 </td>
             </tr>
