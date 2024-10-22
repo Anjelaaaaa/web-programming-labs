@@ -8,7 +8,7 @@
     <div class="list center">
         <h1>Cookies</h1> 
     
-        <form method="POST"> 
+        <form> 
             <div> 
                 <label class="label" for="color">Выберите цвет текста:</label> 
                 <input type="color" name="color" id="color" value="{{ color or '' }}"> 
@@ -31,8 +31,11 @@
     
             <div> 
                 <button class="OK" type="submit">ОК</button> 
-            </div> 
+            </div>
         </form>
     </div> 
-{% endblock %}
 
+    <div class="center">
+        <a href="/lab3/del_settings">Вернуть дизайн страницы</a>
+    </div>
+{% endblock %}

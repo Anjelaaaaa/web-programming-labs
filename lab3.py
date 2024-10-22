@@ -75,20 +75,20 @@ def success():
     return render_template('lab3/success.html')
 
 
-@lab3.route('/lab3/settings', methods=['GET', 'POST']) 
+@lab3.route('/lab3/settings') 
 def settings():
-    if request.method == 'POST':  
-        color = request.form.get('color') 
-        backgroundcolor = request.form.get('backgroundcolor')
-        fontsize = request.form.get('fontsize')
-        headerfooter = request.form.get('headerfooter')  
-        if color or backgroundcolor or fontsize or headerfooter: 
-            resp = make_response(redirect('/lab3/settings')) 
-            resp.set_cookie('color', color) 
-            resp.set_cookie('backgroundcolor', backgroundcolor)
-            resp.set_cookie('fontsize', fontsize)
-            resp.set_cookie('headerfooter', headerfooter)  
-            return resp 
+    color = request.args.get('color') 
+    backgroundcolor = request.args.get('backgroundcolor')
+    fontsize = request.args.get('fontsize')
+    headerfooter = request.args.get('headerfooter')
+
+    if color or backgroundcolor or fontsize or headerfooter: 
+        resp = make_response(redirect('/lab3/settings')) 
+        resp.set_cookie('color', color) 
+        resp.set_cookie('backgroundcolor', backgroundcolor)
+        resp.set_cookie('fontsize', fontsize)
+        resp.set_cookie('headerfooter', headerfooter)  
+        return resp 
  
     color = request.cookies.get('color') 
     backgroundcolor = request.cookies.get('backgroundcolor')
@@ -98,12 +98,12 @@ def settings():
     return resp
 
 @lab3.route('/lab3/del_settings')
-def del_cookie():
+def del_settings():
     resp = make_response(redirect('/lab3/settings'))
     resp.set_cookie('color') 
     resp.set_cookie('backgroundcolor')
     resp.set_cookie('fontsize')
-    resp.set_cookie('headerfooter')  
+    resp.set_cookie('headerfooter')
     return resp
 
 @lab3.route('/lab3/ticket')

@@ -8,35 +8,43 @@
 
     {% if FIO and age and place1 and place2 and date%}
 
-    <div class="center pay list">
-        <h1 class="header5">Билет</h1>
-
-        <div class="center">
-            <h3>{{ ticket_type }}</h3>
-            <p>ФИО: {{ FIO }}</p>
-            <p>Возраст: {{ age }}</p>
-            <p>
-                Полка: 
-                {% if shelf == 'up' %}
-                    верхняя
-                {% elif shelf == 'up-side' %}
-                    верхняя боковая
-                {% elif shelf == 'lower' %}
-                    нижняя
-                {% else %}
-                    нижняя боковая
-                {% endif %}
-            </p>
-            <p>Наличие белья: {{ 'с бельем' if linen == 'withlinen' else 'без белья' }}</p>
-            <p>Наличие багажа: {{ 'с багажом' if baggage == 'withbaggage' else 'без багажа' }}</p>
-            <p>Пункт выезда: {{ place1 }}</p>
-            <p>Пункт назначения: {{ place2 }}</p>
-            <p>Дата: {{ date }}</p>
-            <p>Страховка: {{ 'со страховкой' if belay == 'withbelay' else 'без страховки' }}</p>
-            <p>Стоимость: {{ ticket }} руб.</p>
-        </div>
+    <div class="pay list size">
+        <h1 class="header5 forheader1">{{ ticket_type }}</h1>
+        <table class="zhd">
+            <tr>
+                <td>
+                    <p>ФИО: {{ FIO }}</p>
+                    <p>Возраст: {{ age }}</p>
+                </td>
+                <td>
+                    <p>Полка: 
+                        {% if shelf == 'up' %}
+                            верхняя
+                        {% elif shelf == 'up-side' %}
+                            верхняя боковая
+                        {% elif shelf == 'lower' %}
+                            нижняя
+                        {% else %}
+                            нижняя боковая
+                        {% endif %}
+                    </p>
+                    <p>Наличие белья: {{ 'с бельем' if linen == 'withlinen' else 'без белья' }}</p>
+                    <p>Наличие багажа: {{ 'с багажом' if baggage == 'withbaggage' else 'без багажа' }}</p>
+                </td>
+                <td>
+                    <p>Пункт выезда: {{ place1 }}</p>
+                    <p>Пункт назначения: {{ place2 }}</p>
+                </td>
+                <td>
+                    <p>Дата: {{ date }}</p>
+                    <p>Страховка: {{ 'со страховкой' if belay == 'withbelay' else 'без страховки' }}</p>
+                    <img class="train" src="{{ url_for('static', filename='lab3/train.png') }}">
+                </td>
+            </tr>
+        </table>
+        <p>Стоимость: {{ ticket }} руб.</p>
     </div>
-
+    
     <div class="center">
         <a href="/lab3/ticket">Вернуться к покупке билета</a>
     </div>
@@ -44,7 +52,7 @@
     {% else %}
 
     <div class="list">
-        <h1 class="header5">Покупка железнодорожного билета</h1>
+        <h1 class="header5 forheader">Покупка железнодорожного билета</h1>
 
         <form>
             <div>

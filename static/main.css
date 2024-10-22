@@ -100,7 +100,12 @@ div.menu:hover {
 }
 .header5 {
     color: rgb(218, 90, 86);
+}
+.forheader {
     line-height: 45px;
+}
+.forheader1 {
+    display: inline;
 }
 .flask {
     line-height: 22px;
@@ -440,3 +445,19 @@ div.phrase {
 .ticket {
     background-color: rgb(253, 144, 144);
 }
+.again {
+    background-color: rgb(195, 223, 245);
+    border-radius: 7px;
+    padding: 5px;
+}
+.zhd td {
+    vertical-align: top;
+}
+.size {
+    font-size: 13px;
+}
+.train {
+    width: 100px;
+    
+}
+

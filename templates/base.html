@@ -10,7 +10,7 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon2-32x32.png') }}">
     <style> 
         body { 
-            {% if request.cookies.get('color') %} 
+            {% if request.cookies.get('color') %}
             color: {{ request.cookies.get('color') }}; 
             {% endif %} 
             {% if request.cookies.get('backgroundcolor') %} 
