@@ -98,6 +98,10 @@ div.menu:hover {
 .header4 {
     color: rgb(86, 165, 218);
 }
+.header5 {
+    color: rgb(218, 90, 86);
+    line-height: 45px;
+}
 .flask {
     line-height: 22px;
 }
@@ -417,4 +421,22 @@ div.phrase {
     border: 1px;
     padding: 7px;
     width: 70px;
+}
+.price1 {
+    display: inline;
+}
+.price1:hover {
+    background-color: rgb(253, 144, 144);
+    width: 40px;
+    padding: 5px;
+    border-radius: 7px;
+}
+.FIO {
+    border-radius: 10px;
+    border: 1px solid rgb(174, 58, 58);
+    padding: 4px;
+    color: rgb(83, 83, 83);
+}
+.ticket {
+    background-color: rgb(253, 144, 144);
 }

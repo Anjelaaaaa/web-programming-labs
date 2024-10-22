@@ -9,6 +9,8 @@ def lab():
     age = request.cookies.get('age')
     if name is None:
         name = "Незвестный"
+    if age is None:
+        age = "Неизвестен"
     return render_template('lab3/lab3.html', name=name, name_color=name_color, age=age)
 
 
@@ -61,7 +63,6 @@ def pay():
         price = 80 
     else:
         price = 70 
-
     if request.args.get('milk') == 'on':
         price += 30
     if request.args.get('sugar') == 'on':
@@ -71,7 +72,7 @@ def pay():
 
 @lab3.route('/lab3/success')
 def success():
-    return render_template('lab3/success.html', price=price)
+    return render_template('lab3/success.html')
 
 
 @lab3.route('/lab3/settings', methods=['GET', 'POST']) 
@@ -96,8 +97,44 @@ def settings():
     resp = make_response(render_template('lab3/settings.html', color=color, backgroundcolor=backgroundcolor, fontsize=fontsize, headerfooter=headerfooter)) 
     return resp
 
+@lab3.route('/lab3/del_settings')
+def del_cookie():
+    resp = make_response(redirect('/lab3/settings'))
+    resp.set_cookie('color') 
+    resp.set_cookie('backgroundcolor')
+    resp.set_cookie('fontsize')
+    resp.set_cookie('headerfooter')  
+    return resp
 
-# @lab3.route('/lab3/train')
-# def success():
-#     return render_template('lab3/train.html')
+@lab3.route('/lab3/ticket')
+def ticket():
+    ticket = 0
+    FIO = request.args.get('FIO')
+    age = request.args.get('age')
+    shelf = request.args.get('shelf')
+    linen = request.args.get('linen')
+    baggage = request.args.get('baggage')
+    place1 = request.args.get('place1')
+    place2 = request.args.get('place2')
+    date = request.args.get('date')
+    belay = request.args.get('belay')
+    if age is None:
+        age = 0
+    else:
+        age = int(age)
+    if age < 18:
+        ticket += 700
+        ticket_type = "Детский билет"
+    else:
+        ticket += 1000
+        ticket_type = "Взрослый билет"
+    if shelf == 'lower' or shelf == 'lower-side':
+        ticket += 100
+    if linen == 'withlinen':
+        ticket += 75
+    if baggage == 'withbaggage':
+        ticket += 250
+    if belay == 'withbelay':
+        ticket += 150
+    return render_template('lab3/ticket.html', FIO=FIO, age=age, ticket=ticket, shelf=shelf, linen=linen, baggage=baggage, belay=belay, ticket_type=ticket_type, place1=place1, place2=place2, date=date)
 

@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  Лабораторная работа 3 {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+
+    {% if FIO and age and place1 and place2 and date%}
+
+    <div class="center pay list">
+        <h1 class="header5">Билет</h1>
+
+        <div class="center">
+            <h3>{{ ticket_type }}</h3>
+            <p>ФИО: {{ FIO }}</p>
+            <p>Возраст: {{ age }}</p>
+            <p>
+                Полка: 
+                {% if shelf == 'up' %}
+                    верхняя
+                {% elif shelf == 'up-side' %}
+                    верхняя боковая
+                {% elif shelf == 'lower' %}
+                    нижняя
+                {% else %}
+                    нижняя боковая
+                {% endif %}
+            </p>
+            <p>Наличие белья: {{ 'с бельем' if linen == 'withlinen' else 'без белья' }}</p>
+            <p>Наличие багажа: {{ 'с багажом' if baggage == 'withbaggage' else 'без багажа' }}</p>
+            <p>Пункт выезда: {{ place1 }}</p>
+            <p>Пункт назначения: {{ place2 }}</p>
+            <p>Дата: {{ date }}</p>
+            <p>Страховка: {{ 'со страховкой' if belay == 'withbelay' else 'без страховки' }}</p>
+            <p>Стоимость: {{ ticket }} руб.</p>
+        </div>
+    </div>
+
+    <div class="center">
+        <a href="/lab3/ticket">Вернуться к покупке билета</a>
+    </div>
+
+    {% else %}
+
+    <div class="list">
+        <h1 class="header5">Покупка железнодорожного билета</h1>
+
+        <form>
+            <div>
+                Взрослый билет:
+                <div class="price1">1000&#x20bd;</div>
+            </div>
+
+            <div>
+                Детский билет:
+                <div class="price1">700&#x20bd;</div>
+            </div>
+
+            <div>
+                ФИО:
+                <label>
+                    <input class="FIO" type="text" name="FIO" required>
+                    
+                </label>
+            </div>
+
+            <div>
+                Возраст:
+                <label>
+                    <input class="FIO" type="number" name="age" min="1" max="120" required>
+                </label>
+            </div>
+
+            <div>Выберите полку:</div>
+
+            <div>
+                <label>
+                    <input type="radio" value="up" name="shelf" checked>верхняя
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" value="up-side" name="shelf">верхняя боковая
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" value="lower" name="shelf">нижняя
+                    <div class="price1">100&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" value="lower-side" name="shelf">нижняя боковая
+                    <div class="price1">100&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>Наличие белья:</div>
+
+            <div>
+                <label>
+                    <input type="radio" value="withlinen" name="linen" checked>с бельем
+                    <div class="price1">75&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" value="nolinen" name="linen">без белья
+                </label>
+            </div>
+
+            <div>Наличие багажа:</div>
+
+            <div>
+                <label>
+                    <input type="radio" value="withbaggage" name="baggage" checked>с багажом
+                    <div class="price1">250&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" value="nobaggage" name="baggage">без багажа
+                </label>
+            </div>
+
+            <div>
+                Пункт выезда:
+                <label>
+                    <input class="FIO" type="text" name="place1" required>
+                </label>
+            </div>
+
+            <div>
+                Пункт назначения:
+                <label>
+                    <input class="FIO" type="text" name="place2" required>
+                </label>
+            </div>
+
+            <div>
+                Дата поездки:
+                <label>
+                    <input class="FIO" type="date" name="date" required>
+                </label>
+            </div>
+
+            <div>Наличие страховки:</div>
+
+            <div>
+                <label>
+                    <input type="radio" value="withbelay" name="belay" checked>со страховкой
+                    <div class="price1">150&#x20bd;</div>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" value="nobelay" name="belay">без страховки
+                </label>
+            </div>
+
+            <div>
+                <button class="pay1 ticket" type="submit">Показать билет</button>
+            </div>
+        </form>
+    </div>
+
+    {% endif %}
+
+{% endblock %}
