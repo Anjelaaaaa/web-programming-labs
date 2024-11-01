@@ -110,6 +110,9 @@ div.menu:hover {
 .header7 {
     color: rgb(85, 199, 214);
 }
+.header8 {
+    color: rgb(236, 181, 79);
+}
 .forheader {
     line-height: 45px;
 }
@@ -491,11 +494,16 @@ div.phrase {
 .game2 {
     color: rgb(138, 212, 88);
     padding: 5px;
-
 }
 .game3 {
     color: rgb(233, 189, 94);
 }
 .game4 {
     color: rgb(233, 126, 94);
+}
+.division {
+    background-color: rgb(235, 226, 201);
+}
+.equal {
+    width: 30px;
 }
