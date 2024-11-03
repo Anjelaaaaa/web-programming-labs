@@ -9,10 +9,12 @@
         <h1 class="center header2">{{error}}</h1>
         <div class="center"><a href="/lab4/tree">Вернуться назад</a></div>
     {% else %}
-        <div>Посажено деревьев: {{ tree_count }}</div>
-        <form method="post">
-            <button name="operation" value="plant">Посадить дерево</button>
-            <button name="operation" value="cut">Срубить дерево</button>
-        </form>
+        <div class="list center tree">
+            <h2 class="header2">Посажено деревьев: {{ tree_count }}</h2>
+            <form method="post">
+                <button class="userinfo" name="operation" value="plant" {% if tree_count >= 10 %}disabled{% endif %}>Посадить дерево</button>
+                <button class="userinfo" name="operation" value="cut" {% if tree_count <= 0 %}disabled{% endif %}>Срубить дерево</button>
+            </form>
+        </div>
     {% endif %}
 {% endblock %}
