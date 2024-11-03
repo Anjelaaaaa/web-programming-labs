@@ -535,6 +535,7 @@ div.phrase {
 }
 .entrance {
     background-color: rgb(226, 210, 243);
+    padding: 8px;
 }
 .aurhorized {
     border: 1px outset rgb(151, 72, 204);
