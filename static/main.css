@@ -116,6 +116,9 @@ div.menu:hover {
 .header9 {
     color: rgb(86, 135, 241);
 }
+.header10 {
+    color: rgb(136, 59, 187);
+}
 .forheader {
     line-height: 45px;
 }
@@ -529,4 +532,10 @@ div.phrase {
 }
 .tree {
     background-color: rgb(220, 240, 205);
+}
+.entrance {
+    background-color: rgb(226, 210, 243);
+}
+.aurhorized {
+    border: 1px outset rgb(151, 72, 204);
 }
