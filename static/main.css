@@ -113,6 +113,9 @@ div.menu:hover {
 .header8 {
     color: rgb(236, 181, 79);
 }
+.header9 {
+    color: rgb(86, 135, 241);
+}
 .forheader {
     line-height: 45px;
 }
@@ -501,8 +504,25 @@ div.phrase {
 .game4 {
     color: rgb(233, 126, 94);
 }
-.division {
+.addition {
     background-color: rgb(235, 226, 201);
+    overflow: auto;
+}
+.multiplication {
+    background-color: rgb(235, 201, 201);
+    overflow: auto;
+}
+.division {
+    background-color: rgb(216, 235, 201);
+    overflow: auto;
+}
+.subtraction {
+    background-color: rgb(201, 215, 235);
+    overflow: auto;
+}
+.exponentiation {
+    background-color: rgb(213, 201, 235);
+    overflow: auto;
 }
 .equal {
     width: 30px;

@@ -6,13 +6,13 @@
 {# основной контент: #}
 {% block main %}
     {% if error %}
-        <h1 class="center header8">{{ error }}</h1>
+        <h1 class="center header2">{{ error }}</h1>
     {% else %}
         {% if error0 %}
-            <h1 class="center header8">{{ error0 }}</h1>
+            <h1 class="center header2">{{ error0 }}</h1>
         {% else %}
             <div class="list center division">
-                <h1 class="header8">Деление чисел</h1>
+                <h1 class="header2">Деление чисел</h1>
                 {{ x1 }} / {{ x2 }} = {{ result }}
             </div>
         {% endif %}
