@@ -119,6 +119,9 @@ div.menu:hover {
 .header10 {
     color: rgb(184, 133, 250);
 }
+.header11 {
+    color: rgb(230, 211, 43);
+}
 .forheader {
     line-height: 45px;
 }
@@ -537,6 +540,7 @@ div.phrase {
 .entrance {
     background-color: rgb(226, 210, 243);
     padding: 8px;
+    margin: 4px;
 }
 .aurhorized {
     background-color: rgb(230, 230, 230);
@@ -551,4 +555,11 @@ div.phrase {
 }
 .temperature {
     border: 1px solid rgb(186, 204, 235);
+}
+.grain {
+    border: 1px solid rgb(230, 216, 97);
+}
+.ordergrain {
+    background-color: rgb(243, 235, 163);
+    padding: 10px;
 }

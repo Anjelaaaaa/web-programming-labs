@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block lab %} Оплата {% endblock %}
+
+{% block main %}
+    <div class="center pay2 list ">
+        <h2>Заказ успешно сформирован!</h2>
+        <img class="check" src="{{ url_for('static', filename='lab3/pay.png') }}">
+        <p>Вы заказали {{ grain_type }}</p>
+        <p>Вес: {{ weight }} тонн</p>
+        <p>Сумма к оплате: {{ total_cost }} руб.</p>
+        {% if discount %}
+            <p>Применена скидка 10% за большой объём в размере: {{ discount }} руб.</p>
+        {% endif %}
+    </div>
+    <div class="center"><a class="pay1" href="/lab4/grain">Вернуться к заказу зерна</a></div>
+{% endblock %}

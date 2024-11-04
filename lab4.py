@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, session
+from flask import Blueprint, render_template, request, redirect, session, url_for
 lab4 = Blueprint('lab4', __name__)
 
 
@@ -118,7 +118,7 @@ def tree():
         tree_count +=1
     if tree_count < 0:
         tree_count = 0
-        return render_template('lab4/tree.html', error='Вы не можете срубить больше деревьев')
+        return render_template('lab4/tree.html', error='Вы не можете срубить больше деревьев', tree_count=tree_count)
     return redirect('/lab4/tree')
 
 
@@ -169,7 +169,7 @@ def fridge():
     snowflake_count = 0
     if request.method == 'POST':
         temperature = request.form.get('temperature')
-        if not temperature:
+        if temperature == '':
             message = 'Температура не задана'
         else:
             temperature = int(temperature)
@@ -187,4 +187,45 @@ def fridge():
                 message = f'Установлена температура: {temperature}°C'
                 snowflake_count = 1
     return render_template('lab4/fridge.html', message=message, snowflake_count=snowflake_count)
+
+
+grain_prices = [
+    {'name': 'ячмень', 'price': '12345'},
+    {'name': 'овёс', 'price': '8522'},
+    {'name':'пшеница', 'price': '8722'},
+    {'name': 'рожь', 'price': '14111'}
+]
+
+@lab4.route('/lab4/grain', methods=['GET', 'POST'])
+def grain():
+    if request.method == 'POST':
+        grain_type = request.form.get('grain_type')
+        weight = request.form.get('weight')
+        if weight == '':
+            message = 'Вес не указан'
+            return render_template('lab4/grain.html', message=message)
+        weight = int(weight)
+        if weight <= 0:
+            message = 'Вес должен быть больше 0'
+            return render_template('lab4/grain.html', message=message) 
+        elif weight > 500:
+            message = 'Такого объёма сейчас нет в наличии'
+            return render_template('lab4/grain.html', message=message)  
+        else:
+            for grain_price in grain_prices:
+                if grain_price['name'] == grain_type:
+                    price = grain_price['price']
+        price = int(price)  
+        total_cost = price * weight
+        discount = 0
+        if weight > 50:
+            discount = total_cost * 0.1
+            total_cost = total_cost * 0.9
+        return render_template('lab4/pay.html', weight=weight, grain_type=grain_type, total_cost=total_cost, discount=discount)
+    return render_template('lab4/grain.html')
+
+
+@lab4.route('/lab4/pay')
+def pay():
+    return render_template('lab4/pay.html')
 
