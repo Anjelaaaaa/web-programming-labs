@@ -541,3 +541,14 @@ div.phrase {
 .aurhorized {
     background-color: rgb(230, 230, 230);
 }
+.snowflake {
+    width: 100px;
+    display: inline;
+}
+.fridge {
+    background-color: rgb(217, 227, 245);
+    padding: 10px;
+}
+.temperature {
+    border: 1px solid rgb(186, 204, 235);
+}

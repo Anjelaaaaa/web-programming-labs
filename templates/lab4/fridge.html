@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block lab %} Холодильник {% endblock %}
+
+{% block main %}
+    <div class="list center">
+        <h1 class="header4 forheader">Температура холодильника</h1>
+        <form method="post">
+            <div>
+                <label for="temperature">Температура (°C):</label>
+                <input class="userinfo temperature" type="number" id="temperature" name="temperature">
+            </div>
+            <div class="center">
+                <button class="userinfo fridge" type="submit">Установить</button>
+            </div>
+        </form>
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+        {% if snowflake_count %}
+            <div class="snowflake">
+                {% for snowflake in range(snowflake_count) %}
+                    <img class="snowflake" src="{{ url_for('static', filename='lab4/snowflake.png') }}">
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
