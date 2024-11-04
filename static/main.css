@@ -117,7 +117,7 @@ div.menu:hover {
     color: rgb(86, 135, 241);
 }
 .header10 {
-    color: rgb(136, 59, 187);
+    color: rgb(184, 133, 250);
 }
 .forheader {
     line-height: 45px;
@@ -360,6 +360,7 @@ div.phrase {
 }
 .error {
     color: rgb(173, 40, 40);
+    font-style: italic;
 }
 .error:hover {
     text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.329);
@@ -538,5 +539,5 @@ div.phrase {
     padding: 8px;
 }
 .aurhorized {
-    border: 1px outset rgb(151, 72, 204);
+    background-color: rgb(230, 230, 230);
 }

@@ -6,7 +6,7 @@
 {# основной контент: #}
 {% block main %}
     {% if authorized %}
-        <h1 class="center header10">Добро пожаловать, {{ login }}!</h1>
+        <h1 class="center header10">Добро пожаловать, {{ name }}!</h1>
         <div>
             <form action="/lab4/logout" method="post">
                 <div class="center"><button class="userinfo entrance">Выход</button></div>
@@ -14,19 +14,30 @@
         </div>
     {% else %}
         <div class="list">
-            <h1 class="header10">Вход</h1>
-            <h2>Пожалуйста, авторизуйтесь</h2>
+            <h1 class="header10 center">Вход</h1>
+            <h2 class="center welcome">Пожалуйста, авторизуйтесь</h2>
             <form method="post">
                     <div>
+                        <label for="name">Имя пользователя:</label>
+                        <input class="userinfo aurhorized" type="text" id="name" name="name" value="{{ name or '' }}">
+                    </div>
+                    <div>
+                        <label for="sex">Пол:</label>
+                        <select class="userinfo aurhorized" name="sex">
+                            <option {% if sex == 'мужской' %}selected{% endif %}>мужской</option>
+                            <option {% if sex == 'женский' %}selected{% endif %}>женский</option>
+                        </select>
+                    </div>
+                    <div>
                         <label for="login">Пользователь:</label>
-                        <input class="userinfo aurhorized" type="text" id="login" name="login">
+                        <input class="userinfo aurhorized" type="text" id="login" name="login" value="{{ login or '' }}">
                     </div>
                     <div>
                         <label for="password">Пароль:</label>
-                        <input class="userinfo aurhorized" type="text" id="password" name="password">
+                        <input class="userinfo aurhorized" type="password" id="password" name="password" value="{{ password or '' }}">
                     </div>
-                    <div>{{ error }}</div>
-                    <div>
+                    <div class="error">{{ error }}</div>
+                    <div class="center">
                         <button class="userinfo entrance" type="submit">Войти</button>
                         <button class="userinfo entrance" type="reset">Отмена</button>
                     </div>
