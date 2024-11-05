@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  Лабораторная работа 4 {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+    <div class="list">
+        <h1 class="header10 center">Регистрация</h1>
+        <form method="post">
+            <div>
+                <label for="name">Имя:</label>
+                <input class="userinfo aurhorized" type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="sex">Пол:</label>
+                <select class="userinfo aurhorized" name="sex" required>
+                    <option value="мужской">мужской</option>
+                    <option value="женский">женский</option>
+                </select>
+            </div>
+            <div>
+                <label for="login">Логин:</label>
+                <input class="userinfo aurhorized" type="text" id="login" name="login" required>
+            </div>
+            <div>
+                <label for="password">Пароль:</label>
+                <input class="userinfo aurhorized" type="password" id="password" name="password" required>
+            </div>
+            <div class="center"><button class="userinfo entrance" type="submit">Зарегистрироваться</button></div>
+        </form>
+    </div>
+    <div class="center"><a href="/lab4/login">Войти</a></div>
+{% endblock %}

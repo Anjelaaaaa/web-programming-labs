@@ -157,6 +157,57 @@ def login():
     return render_template('lab4/login.html', error=error, authorized=False, login=login, password=password, name=name, sex=sex)
 
 
+@lab4.route('/lab4/registration', methods = ['GET', 'POST'])
+def registration():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        login = request.form.get('login')
+        password = request.form.get('password')
+        sex = request.form.get('sex')
+        if name and login and password:
+            users.append({'name': name, 'login': login, 'password': password, 'sex': sex})
+            return redirect('/lab4/login')
+    return render_template('lab4/registration.html')
+
+
+@lab4.route('/lab4/users')
+def users_list():
+    if 'name' not in session:
+        return redirect('/lab4/login')
+    return render_template('lab4/users.html', users=users, authorized=True)
+
+
+@lab4.route('/lab4/delete', methods=['POST'])
+def delete_user():
+    if 'name' in session:
+        for user in users: 
+            if user['name'] == session['name']:
+                users.remove(user)
+        session.pop('name', None)
+    return redirect('/lab4/login')
+
+
+@lab4.route('/lab4/edit', methods=['GET', 'POST'])
+def edit_user():
+    if 'name' not in session:
+        return redirect('/lab4/login')
+    user = None
+    for current_user in users:
+        if current_user['name'] == session['name']:
+            user = current_user
+    if request.method == 'POST':
+        name = request.form.get('name')
+        password = request.form.get('password')
+        if name and name != user['name']:  
+            user['name'] = name
+        if password:  
+            user['password'] = password
+        if name and name != session['name']:
+            session['name'] = name 
+        return redirect('/lab4/users')
+    return render_template('lab4/edit.html', user=user) 
+
+
 @lab4.route('/lab4/logout', methods = ['POST'])
 def logout():
     session.pop('name', None)
