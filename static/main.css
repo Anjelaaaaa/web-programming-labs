@@ -563,3 +563,16 @@ div.phrase {
     background-color: rgb(243, 235, 163);
     padding: 10px;
 }
+.article {
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    padding: 15px;
+    display: inline-block;
+    margin-right: 20px;
+}
+.article:hover {
+    background-color: rgb(255, 222, 192);
+}
+.register {
+    text-align: center;
+}
