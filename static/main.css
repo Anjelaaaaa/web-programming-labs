@@ -576,15 +576,21 @@ div.phrase {
 .article2:hover {
     background-color: rgb(255, 228, 192);
 }
-.knowledge {
-    background-color: rgb(255, 228, 192);
-}
-.forbutton {
-    padding: 10px;
-}
 .article3:hover {
     background-color: rgb(220, 217, 248);
 }
+.article4:hover {
+    background-color: rgb(248, 217, 230);
+}
+.knowledge {
+    background-color: rgb(255, 228, 192);
+}
 .knowledge1 {
     background-color: rgb(220, 217, 248);
+}
+.knowledge2 {
+    background-color: rgb(248, 217, 230);
+}
+.forbutton {
+    padding: 10px;
 }
