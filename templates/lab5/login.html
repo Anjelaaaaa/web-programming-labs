@@ -5,17 +5,17 @@
 
 {# основной контент: #}
 {% block main %}
-    <h1 class="header8 center">База знаний</h1>
+    <h1 class="header3 center">База знаний</h1>
     <div class="center">Anonymous</div>
     <div class="center">
-        <div class="article article2"><a href="/lab5/login">Вход</a></div>
-        <div class="article article2 knowledge"><a href="/lab5/register">Регистрация</a></div>
-        <div class="article article2"><a href="/lab5/list">Список статей</a></div>
-        <div class="article article2"><a href="/lab5/create">Создать статью</a></div>
+        <div class="article article3 knowledge1"><a href="/lab5/login">Вход</a></div>
+        <div class="article article3"><a href="/lab5/register">Регистрация</a></div>
+        <div class="article article3"><a href="/lab5/list">Список статей</a></div>
+        <div class="article article3"><a href="/lab5/create">Создать статью</a></div>
     </div>
-    <div class="list knowledge">
-        <h1 class="header8 center">Регистрация</h1>
-        <form action="/lab5/register" method="post">
+    <div class="list knowledge1">
+        <h1 class="header3 center">Вход в систему</h1>
+        <form action="/lab5/login" method="post">
             <div>
                 <label>
                     Логин: <input class="userinfo" type="text" name="login">
@@ -32,7 +32,7 @@
                 <div class="error">{{ error }}</div>
             {% endif %}
 
-            <div class="center"><button class="userinfo forbutton" type="submit">Зарегистрироваться</button></div>
+            <div class="center"><button class="userinfo forbutton" type="submit">Вход</button></div>
         </form>
     </div>
 {% endblock %}

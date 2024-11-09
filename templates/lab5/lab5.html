@@ -6,11 +6,15 @@
 {# основной контент: #}
 {% block main %}
     <h1 class="header9 center">База знаний</h1>
-    <div class="center">Anonymous</div>
-    <div class="register">
-        <div class="article"><a href="/lab5/login">Вход</a></div>
-        <div class="article"><a href="/lab5/register">Регистрация</a></div>
-        <div class="article"><a href="/lab5/list">Список статей</a></div>
-        <div class="article"><a href="/lab5/create">Создать статью</a></div>
+    {% if login %}
+        <div class="center">{{ login }}</div>
+    {% else %}
+        <div class="center">Anonymous</div>
+    {% endif %}
+    <div class="center">
+        <div class="article article1"><a href="/lab5/login">Вход</a></div>
+        <div class="article article1"><a href="/lab5/register">Регистрация</a></div>
+        <div class="article article1"><a href="/lab5/list">Список статей</a></div>
+        <div class="article article1"><a href="/lab5/create">Создать статью</a></div>
     </div>
 {% endblock %}

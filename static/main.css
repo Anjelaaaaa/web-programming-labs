@@ -570,9 +570,21 @@ div.phrase {
     display: inline-block;
     margin-right: 20px;
 }
-.article:hover {
-    background-color: rgb(255, 222, 192);
+.article1:hover {
+    background-color: rgb(192, 207, 255);
 }
-.register {
-    text-align: center;
+.article2:hover {
+    background-color: rgb(255, 228, 192);
+}
+.knowledge {
+    background-color: rgb(255, 228, 192);
+}
+.forbutton {
+    padding: 10px;
+}
+.article3:hover {
+    background-color: rgb(220, 217, 248);
+}
+.knowledge1 {
+    background-color: rgb(220, 217, 248);
 }
