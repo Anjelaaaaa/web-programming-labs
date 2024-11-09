@@ -6,7 +6,11 @@
 {# основной контент: #}
 {% block main %}
     <h1 class="header3 center">База знаний</h1>
-    <div class="center">Anonymous</div>
+    {% if login %}
+        <div class="center">{{ login }}</div>
+    {% else %}
+        <div class="center">Anonymous</div>
+    {% endif %}
     <div class="center">
         <div class="article article3 knowledge1"><a href="/lab5/login">Вход</a></div>
         <div class="article article3"><a href="/lab5/register">Регистрация</a></div>
