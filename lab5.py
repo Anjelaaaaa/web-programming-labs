@@ -44,7 +44,7 @@ def register():
         return render_template('lab5/register.html', error='Такой пользователь уже существует')
 
     password_hash = generate_password_hash(password)
-    cur.execute(f"INSERT INTO users (login, password) VALUES ('{login}', '{password_hash}');") 
+    cur.execute(f"INSERT INTO users(login, password) VALUES ('{login}', '{password_hash}');") 
 
     db_close(conn, cur)
     return render_template('lab5/success.html', login=login)
@@ -99,3 +99,21 @@ def create():
 
     db_close(conn, cur)
     return redirect('/lab5/')
+
+
+@lab5.route('/lab5/list', methods = ['GET', 'POST'])
+def list():
+    login=session.get('login')
+    if not login:
+        return redirect('/lab5/login')
+
+    conn, cur = db_connect()
+
+    cur.execute(f"SELECT * FROM users WHERE login='{login}';")
+    login_id = cur.fetchone()["id"]
+
+    cur.execute(f"SELECT * FROM articles WHERE user_id='{login_id}';")
+    articles = cur.fetchall()
+
+    db_close(conn, cur)
+    return render_template('lab5/articles.html', articles=articles, login=session.get('login'))

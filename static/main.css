@@ -570,6 +570,13 @@ div.phrase {
     display: inline-block;
     margin-right: 20px;
 }
+.articles {
+    border-radius: 25px;
+    margin: 30px auto;
+    padding: 40px;
+    box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
+    line-height: 26px;
+}
 .article1:hover {
     background-color: rgb(192, 207, 255);
 }
@@ -582,6 +589,9 @@ div.phrase {
 .article4:hover {
     background-color: rgb(248, 217, 230);
 }
+.article5:hover {
+    background-color: rgb(221, 248, 217);
+}
 .knowledge {
     background-color: rgb(255, 228, 192);
 }
@@ -591,6 +601,13 @@ div.phrase {
 .knowledge2 {
     background-color: rgb(248, 217, 230);
 }
+.knowledge3 {
+    background-color: rgb(221, 248, 217);
+}
 .forbutton {
     padding: 10px;
+}
+.title {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 6px rgb(36, 59, 17);
 }
