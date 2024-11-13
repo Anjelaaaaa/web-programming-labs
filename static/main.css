@@ -568,7 +568,7 @@ div.phrase {
     box-shadow: 4px 4px 10px rgba(75, 75, 75, 0.568);
     padding: 15px;
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .articles {
     border-radius: 25px;
@@ -592,6 +592,15 @@ div.phrase {
 .article5:hover {
     background-color: rgb(221, 248, 217);
 }
+.article6:hover {
+    background-color: rgb(248, 217, 217);
+}
+.article7:hover {
+    background-color: rgb(217, 228, 248);
+}
+.article8:hover {
+    background-color: rgb(248, 245, 217);
+}
 .knowledge {
     background-color: rgb(255, 228, 192);
 }
@@ -603,6 +612,15 @@ div.phrase {
 }
 .knowledge3 {
     background-color: rgb(221, 248, 217);
+}
+.knowledge4 {
+    background-color: rgb(248, 217, 217);
+}
+.knowledge5 {
+    background-color: rgb(217, 228, 248);
+}
+.knowledge6 {
+    background-color: rgb(248, 245, 217);
 }
 .forbutton {
     padding: 10px;
@@ -618,4 +636,15 @@ div.phrase {
     margin-left: 5px;
     background-color: rgb(255, 255, 255);
     font-size: 14px;
+}
+.favorite {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 6px rgb(240, 41, 134);
+}
+.public {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 6px rgb(37, 154, 231);
+}
+.inline {
+    display: inline-block;
 }

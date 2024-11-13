@@ -16,6 +16,9 @@
         <div class="article article5"><a href="/lab5/register">Регистрация</a></div>
         <div class="article article5 knowledge3"><a href="/lab5/list">Список статей</a></div>
         <div class="article article5"><a href="/lab5/create">Создать статью</a></div>
+        <div class="article article5"><a href="/lab5/users">Список пользователей</a></div>
+        <div class="article article5"><a href="/lab5/favorite_articles">Любимые статьи</a></div>
+        <div class="article article5 "><a href="/lab5/public_articles">Публичные статьи</a></div>
     </div>
     <div class="list knowledge3">
         <h1 class="header2 center">Редактирование статьи</h1>
@@ -29,6 +32,18 @@
 
             <div>
                 <textarea class="userinfo" name="article_text">{{ article_text or '' }}</textarea>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="is_favorite" {% if is_favorite %}checked{% endif %}> Добавить в избранное
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="is_public" {% if is_public %}checked{% endif %}> Сделать статью публичной
+                </label>
             </div>
 
             {% if error %}

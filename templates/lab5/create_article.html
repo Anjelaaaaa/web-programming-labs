@@ -5,20 +5,24 @@
 
 {# основной контент: #}
 {% block main %}
-    <h1 class="header6 center">База знаний</h1>
+    <h1 class="header5 center">База знаний</h1>
     {% if login %}
         <div class="center">{{ login }}</div>
     {% else %}
         <div class="center">Anonymous</div>
     {% endif %}
     <div class="center">
-        <div class="article article4"><a href="/lab5/login">Вход</a></div>
-        <div class="article article4"><a href="/lab5/register">Регистрация</a></div>
-        <div class="article article4"><a href="/lab5/list">Список статей</a></div>
-        <div class="article article4 knowledge2"><a href="/lab5/create">Создать статью</a></div>
+        <div class="article article6"><a href="/lab5/login">Вход</a></div>
+        <div class="article article6"><a href="/lab5/register">Регистрация</a></div>
+        <div class="article article6"><a href="/lab5/list">Список статей</a></div>
+        <div class="article article6 knowledge4"><a href="/lab5/create">Создать статью</a></div>
+        <div class="article article6"><a href="/lab5/users">Список пользователей</a></div>
+        <div class="article article6"><a href="/lab5/favorite_articles">Любимые статьи</a></div>
+        <div class="article article6"><a href="/lab5/public_articles">Публичные статьи</a></div>
+</div>
     </div>
-    <div class="list knowledge2">
-        <h1 class="header6 center">Создание статьи</h1>
+    <div class="list knowledge4">
+        <h1 class="header5 center">Создание статьи</h1>
         <form method="post">
             <div>
                 <label>
@@ -29,6 +33,18 @@
 
             <div>
                 <textarea class="userinfo" name="article_text">{{ article_text or '' }}</textarea>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="is_favorite"> Добавить в избранное
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="is_public"> Сделать статью публичной
+                </label>
             </div>
 
             {% if error %}
