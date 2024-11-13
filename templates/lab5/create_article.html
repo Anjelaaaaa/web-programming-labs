@@ -23,13 +23,17 @@
             <div>
                 <label>
                     Название статьи:
-                    <input class="userinfo" type="text" maxlength="50" name="title">
+                    <input class="userinfo" type="text" maxlength="50" name="title" value="{{ title or '' }}">
                 </label>
             </div>
 
             <div>
-                <textarea class="userinfo" name="article_text"></textarea>
+                <textarea class="userinfo" name="article_text">{{ article_text or '' }}</textarea>
             </div>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
 
             <div class="center">
                 <button class="userinfo forbutton" type="submit">Готово</button>

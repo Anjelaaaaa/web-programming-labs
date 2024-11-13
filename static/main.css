@@ -611,3 +611,11 @@ div.phrase {
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 6px rgb(36, 59, 17);
 }
+.edit {
+    border-radius: 10px;
+    padding: 4px;
+    display: inline-block;
+    margin-left: 5px;
+    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+}

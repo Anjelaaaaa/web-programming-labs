@@ -5,9 +5,20 @@
 
 {# основной контент: #}
 {% block main %}
-    <div class="list">
+    <h1 class="header8 center">База знаний</h1>
+    {% if login %}
+        <div class="center">{{ login }}</div>
+    {% else %}
+        <div class="center">Anonymous</div>
+    {% endif %}
+    <div class="center">
+        <div class="article article2"><a href="/lab5/login">Вход</a></div>
+        <div class="article article2 knowledge"><a href="/lab5/register">Регистрация</a></div>
+        <div class="article article2"><a href="/lab5/list">Список статей</a></div>
+        <div class="article article2"><a href="/lab5/create">Создать статью</a></div>
+    </div>
+    <div class="list knowledge">
         <h1 class="header8 center">Поздравляем, {{ login }}!</h1>
-        <h2 class="welcome center">Регистрация прошла успешно</h2>
-        <div class="center"><a href="/lab5/">Вернуться к разделам</a></div>
+        <h3 class="welcome center">Регистрация прошла успешно, можете войти в ваш аккаунт</h3>
     </div>
 {% endblock %}
