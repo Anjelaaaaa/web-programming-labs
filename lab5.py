@@ -135,7 +135,7 @@ def create():
         )
     else:
         cur.execute(
-            "INSERT INTO articles(user_id, title, article_text, is_favorite, is_public) VALUES (?, ?, ?, ?, ?);",
+            "INSERT INTO articles(login_id, title, article_text, is_favorite, is_public) VALUES (?, ?, ?, ?, ?);",
             (login_id, title, article_text, is_favorite, is_public)
         )
 
@@ -160,7 +160,7 @@ def list():
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM articles WHERE user_id=%s ORDER BY is_favorite DESC;", (login_id,))
     else:
-        cur.execute("SELECT * FROM articles WHERE user_id=? ORDER BY is_favorite DESC;", (login_id,))
+        cur.execute("SELECT * FROM articles WHERE login_id=? ORDER BY is_favorite DESC;", (login_id,))
     articles = cur.fetchall()
 
     if not articles:
@@ -184,7 +184,7 @@ def edit(article_id):
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM articles WHERE id=%s AND user_id=%s;", (article_id, login_id))
     else:
-        cur.execute("SELECT * FROM articles WHERE id=? AND user_id=?;", (article_id, login_id))
+        cur.execute("SELECT * FROM articles WHERE id=? AND login_id=?;", (article_id, login_id))
     article = cur.fetchone()
 
     if request.method == 'GET':
@@ -227,7 +227,7 @@ def delete(article_id):
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("DELETE FROM articles WHERE id=%s AND user_id=%s;", (article_id, login_id))
     else:
-        cur.execute("DELETE FROM articles WHERE id=? AND user_id=?;", (article_id, login_id))
+        cur.execute("DELETE FROM articles WHERE id=? AND login_id=?;", (article_id, login_id))
 
     db_close(conn, cur)
     return redirect('/lab5/list')
@@ -250,7 +250,7 @@ def favorite_articles():
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM articles WHERE user_id=%s AND is_favorite=TRUE;", (login_id,))
     else:
-        cur.execute("SELECT * FROM articles WHERE user_id=? AND is_favorite=?;", (login_id, True))
+        cur.execute("SELECT * FROM articles WHERE login_id=? AND is_favorite=?;", (login_id, True))
     favorite_articles = cur.fetchall()
 
     db_close(conn, cur)
