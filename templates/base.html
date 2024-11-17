@@ -30,7 +30,8 @@
             background-color: {{ request.cookies.get('headerfooter') }}; 
             {% endif %} 
         }
-    </style> 
+    </style>
+    {% block script %}{% endblock %}
 </head>
 <body>
     <header>
