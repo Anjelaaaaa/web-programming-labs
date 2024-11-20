@@ -648,3 +648,6 @@ div.phrase {
 .inline {
     display: inline-block;
 }
+.booked {
+    width: 400px;
+}
