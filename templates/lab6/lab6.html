@@ -28,6 +28,14 @@
             for (let i = 0; i < office_list.length; i++) {
                 const office = office_list[i];
                 const li = document.createElement('li');
+                li.style.borderRadius = '20px'
+                li.style.boxShadow = '4px 4px 10px rgba(75, 75, 75, 0.568)'
+                li.style.width = '200px'
+                li.style.margin = '17px'
+                li.style.padding = '20px'
+                li.style.display = 'inline-block'
+                li.style.backgroundColor = 'rgb(232, 232, 232)'
+                li.style.lineHeight = '30px'
                 li.innerText = `Офис ${office.number} (стоимость: ${office.price} руб): ${office.tenant || 'свободен'}`;
                 const bookingButton = document.createElement('button');
                 bookingButton.innerText = 'Зарезервировать';
@@ -45,7 +53,7 @@
                 cancellationButton.style.border = '1px'
                 cancellationButton.style.padding = '7px'
                 cancellationButton.style.margin = '5px'
-                cancellationButton.style.backgroundColor = 'rgb(248, 217, 230)'
+                
                 li.appendChild(cancellationButton);
                 ul.appendChild(li);
             }
@@ -70,7 +78,7 @@
         })
         .then(function(data) {
             const totalCost = document.getElementById('total-cost');
-            totalCost.innerText = `Общая стоимость аренды: ${data.result} руб.`;
+            totalCost.innerText = `Общая стоимость аренды: ${data.result || 0} руб.`;
         });
     }
 
@@ -158,9 +166,9 @@
 
 {# основной контент: #}
 {% block main %}
-    <div class="list booked">
-        <h1 class="welcome center">Список кабинетов</h1>
-        <ul id="office-list"></ul>
-        <div class="center" id="total-cost"></div>
+    <div class="center">
+        <h1 class="header3">Список кабинетов</h1>
+        <ul class="office" id="office-list"></ul>
+        <h3 class="header3" id="total-cost"></h3>
     </div>
 {% endblock %}
