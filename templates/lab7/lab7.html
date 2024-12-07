@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="modal center">
+    <div class="modal">
         <input type="hidden" id="id">
         <label>
             Название фильма на русском языке:<br>
@@ -67,10 +67,13 @@
 
         <label>
             Описание:<br>
-            <textarea class="userinfo" id="description"></textarea>
+            <textarea class="userinfo" id="description"></textarea><br>
+            <span class="error" id="description-error"></span>
         </label><br>
 
-        <button class="userinfo forbutton" onclick="sendFilm()">ОК</button>
-        <button class="userinfo forbutton" onclick="cancel()">Отмена</button>
+        <div class="center">
+            <button class="userinfo forbutton" onclick="sendFilm()">ОК</button>
+            <button class="userinfo forbutton" onclick="cancel()">Отмена</button>
+        </div>
     </div>
 {% endblock %}
