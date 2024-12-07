@@ -122,6 +122,9 @@ div.menu:hover {
 .header11 {
     color: rgb(230, 211, 43);
 }
+.header12 {
+    color: rgb(132, 190, 238);
+}
 .forheader {
     line-height: 45px;
 }
@@ -647,4 +650,7 @@ div.phrase {
 }
 .inline {
     display: inline-block;
+}
+.addfilm {
+    background-color: rgb(217, 228, 248);
 }
