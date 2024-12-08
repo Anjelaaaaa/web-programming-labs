@@ -93,8 +93,10 @@ function sendFilm() {
         return resp.json();
     })
     .then(function(errors) {
-        if(errors.description)
-            document.getElementById('description-error').innerText = errors.description;
+        document.getElementById('year-error').innerText = errors.year || '';
+        document.getElementById('description-error').innerText = errors.description || '';
+        document.getElementById('titleru-error').innerText = errors.title_ru || '';
+        document.getElementById('title-error').innerText = errors.title || '';
     });
 }
 
@@ -116,6 +118,9 @@ function editFilm(id) {
 function showModal() {
     document.querySelector('div.modal').style.display = 'block';
     document.getElementById('description-error').innerText = '';
+    document.getElementById('titleru-error').innerText = '';
+    document.getElementById('title-error').innerText = '';
+    document.getElementById('year-error').innerText = '';
 }
 
 function hideModal() {

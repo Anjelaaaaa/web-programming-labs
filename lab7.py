@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from datetime import datetime
 
 lab7 = Blueprint('lab7', __name__)
 
@@ -108,6 +109,14 @@ def put_film(id):
     if id < 0 or id >= len(films):
         return {"error": "Film not found"}, 404
     film = request.get_json()
+    if film['title_ru'] == '':
+        return {'title_ru': 'Укажите русское название'}, 400
+    if film['year'] == '':
+        return {'year': 'Укажите год'}, 400
+    current_year = datetime.now().year
+    year = int(film['year'])
+    if year < 1895 or year > current_year:
+        return {'year': f'Год должен быть от 1895 до {current_year}'}, 400
     if film['description'] == '':
         return {'description': 'Заполните описание'}, 400
     if film['title'] == '':
@@ -119,8 +128,21 @@ def put_film(id):
 @lab7.route('/lab7/rest-api/films/', methods=['POST'])
 def add_film():
     film = request.get_json()
+    if film['title'] == '' and film['title_ru'] == '':
+        return {'title': 'Укажите оригинальное название'}, 400
+    if film['title_ru'] == '':
+        return {'title_ru': 'Укажите русское название'}, 400
+    if film['year'] == '':
+        return {'year': 'Укажите год'}, 400
+    current_year = datetime.now().year
+    year = int(film['year'])
+    if year < 1895 or year > current_year:
+        return {'year': f'Год должен быть от 1895 до {current_year}'}, 400
     if film['description'] == '':
         return {'description': 'Заполните описание'}, 400
+    description = film.get('description', '')
+    if len(description) > 2000:
+        return {'description': 'Описание превышает 2000 символов'}, 400
     if film['title'] == '':
         film['title'] = film['title_ru']
     films.append(film)
