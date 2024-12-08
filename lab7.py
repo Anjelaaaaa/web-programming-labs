@@ -10,8 +10,8 @@ def lab():
 
 films = [
     {
-        "title": "Nobody",
         "title_ru": "Никто",
+        "title": "Nobody",
         "year": 2021,
         "description": "Непримечательный и незаметный семьянин \
             Хатч живёт скучной жизнью обычного аудитора, пока \
@@ -27,8 +27,8 @@ films = [
             И он теперь жаждет мести."
     },
     {
-        "title": "Sherlock",
         "title_ru": "Шерлок",
+        "title": "Sherlock",
         "year": 2010,
         "description": "События разворачиваются в наши дни. \
             Он прошел Афганистан, остался инвалидом. По \
@@ -41,8 +41,8 @@ films = [
             на сложные вопросы."
     },
     {
-        "title": "Green Book",
         "title_ru": "Зеленая книга",
+        "title": "Green Book",
         "year": 2018,
         "description": "1960-е годы. После закрытия нью-йоркского \
             ночного клуба на ремонт вышибала Тони по прозвищу Болтун \
@@ -57,8 +57,8 @@ films = [
             жизнь обоих."
     },
     {
-        "title": "Intouchables",
         "title_ru": "1+1",
+        "title": "Intouchables",
         "year": 2011,
         "description": "Пострадав в результате несчастного случая, \
             богатый аристократ Филипп нанимает в помощники человека, \
@@ -69,8 +69,8 @@ films = [
             размеренную жизнь аристократа дух приключений."
     },
     {
-        "title": "Good Omens",
         "title_ru": "Благие знамения",
+        "title": "Good Omens",
         "year": 2019,
         "description": "Ангел Азирафель и демон Кроули несколько \
             тысяч лет живут среди людей и за это время успели \
@@ -110,6 +110,8 @@ def put_film(id):
     film = request.get_json()
     if film['description'] == '':
         return {'description': 'Заполните описание'}, 400
+    if film['title'] == '':
+        film['title'] = film['title_ru']
     films[id] = film
     return films[id]
 
@@ -119,8 +121,9 @@ def add_film():
     film = request.get_json()
     if film['description'] == '':
         return {'description': 'Заполните описание'}, 400
+    if film['title'] == '':
+        film['title'] = film['title_ru']
     films.append(film)
     id = {'id': len(films) - 1}
     return id
-
 
