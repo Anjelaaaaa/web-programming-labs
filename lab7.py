@@ -130,8 +130,6 @@ def put_film(id):
     return film
 
 
-
-
 @lab7.route('/lab7/rest-api/films/', methods=['POST'])
 def add_film():
     conn, cur = db_connect()
@@ -158,14 +156,12 @@ def add_film():
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (%s, %s, %s, %s) RETURNING id;", 
                     (film['title'], film['title_ru'], film['year'], film['description']))
-        film_id = cur.fetchone()['id']
     else:
         cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (?, ?, ?, ?);", 
                     (film['title'], film['title_ru'], film['year'], film['description']))
-        film_id = cur.lastrowid
+    film_id = cur.fetchone()['id']
 
     db_close(conn, cur)
     
     return {'id': film_id}
-
 
