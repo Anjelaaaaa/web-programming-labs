@@ -43,10 +43,11 @@ def get_films():
 
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM films;")
+        films = cur.fetchall()
     else:
         cur.execute("SELECT * FROM films;")
+        films = [dict(row) for row in cur.fetchall()]
 
-    films = cur.fetchall()
     db_close(conn, cur)
 
     return films
@@ -58,10 +59,12 @@ def get_film(id):
 
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM films WHERE id = %s;", (id,))
+        film = cur.fetchone()
     else:
         cur.execute("SELECT * FROM films WHERE id = ?;", (id,))
+        film = cur.fetchone()
+        return jsonify(dict(films))
 
-    film = cur.fetchone()
     db_close(conn, cur)
 
     if film is None:
@@ -92,10 +95,10 @@ def put_film(id):
 
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT * FROM films WHERE id = %s;", (id,))
+        film_in_db = cur.fetchone()
     else:
         cur.execute("SELECT * FROM films WHERE id = ?;", (id,))
-    
-    film_in_db = cur.fetchone()
+        film_in_db = cur.lastrowid
 
     if film_in_db is None:
         db_close(conn, cur)
@@ -159,9 +162,8 @@ def add_film():
     else:
         cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (?, ?, ?, ?);", 
                     (film['title'], film['title_ru'], film['year'], film['description']))
-    film_id = cur.fetchone()['id']
 
     db_close(conn, cur)
     
-    return {'id': film_id}
+    return ''
 
