@@ -16,8 +16,6 @@
         <div class="article article5"><a href="/lab8/register">Регистрация</a></div>
         <div class="article article5 knowledge3"><a href="/lab8/articles">Список статей</a></div>
         <div class="article article5"><a href="/lab8/create">Создать статью</a></div>
-        <div class="article article5"><a href="/lab8/users">Список пользователей</a></div>
-        <div class="article article5"><a href="/lab8/favorite_articles">Любимые статьи</a></div>
         <div class="article article5 "><a href="/lab8/public_articles">Публичные статьи</a></div>
     </div>
     <div class="list knowledge3">
@@ -32,12 +30,6 @@
 
             <div>
                 <textarea class="userinfo" name="article_text">{{ article_text or '' }}</textarea>
-            </div>
-
-            <div>
-                <label>
-                    <input type="checkbox" name="is_favorite" {% if is_favorite %}checked{% endif %}> Добавить в избранное
-                </label>
             </div>
 
             <div>
