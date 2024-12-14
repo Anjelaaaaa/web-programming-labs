@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, current_app
+from flask import Blueprint, render_template, request, current_app, jsonify
 from datetime import datetime
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -49,7 +49,6 @@ def get_films():
         films = [dict(row) for row in cur.fetchall()]
 
     db_close(conn, cur)
-
     return films
 
 
@@ -62,14 +61,14 @@ def get_film(id):
         film = cur.fetchone()
     else:
         cur.execute("SELECT * FROM films WHERE id = ?;", (id,))
-        film = cur.fetchone()
-        # return jsonify(dict(films))
+        films = cur.fetchone()
+        return jsonify(dict(films))
 
     db_close(conn, cur)
 
     if film is None:
         return {"error": "Film not found"}, 404
-    
+
     return film
 
 
@@ -149,7 +148,7 @@ def add_film():
     year = int(film['year'])
     if year < 1895 or year > current_year:
         return {'year': f'Год должен быть от 1895 до {current_year}'}, 400
-    
+
     if len(film.get('description', '')) > 2000:
         return {'description': 'Описание превышает 2000 символов'}, 400
 
@@ -157,13 +156,12 @@ def add_film():
         return {'description': 'Заполните описание'}, 400
 
     if current_app.config['DB_TYPE'] == 'postgres':
-        cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (%s, %s, %s, %s) RETURNING id;", 
+        cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (%s, %s, %s, %s) RETURNING id;",
                     (film['title'], film['title_ru'], film['year'], film['description']))
     else:
-        cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (?, ?, ?, ?);", 
+        cur.execute("INSERT INTO films (title, title_ru, year, description) VALUES (?, ?, ?, ?);",
                     (film['title'], film['title_ru'], film['year'], film['description']))
 
     db_close(conn, cur)
-    
     return ''
 
