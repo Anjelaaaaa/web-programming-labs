@@ -63,7 +63,7 @@ def get_film(id):
     else:
         cur.execute("SELECT * FROM films WHERE id = ?;", (id,))
         film = cur.fetchone()
-        return jsonify(dict(films))
+        # return jsonify(dict(films))
 
     db_close(conn, cur)
 
@@ -115,7 +115,7 @@ def put_film(id):
     year = int(film['year'])
     if year < 1895 or year > current_year:
         return {'year': f'Год должен быть от 1895 до {current_year}'}, 400
-    
+
     if film.get('description') == '':
         return {'description': 'Заполните описание'}, 400
 
@@ -123,12 +123,12 @@ def put_film(id):
         return {'description': 'Описание превышает 2000 символов'}, 400
 
     if current_app.config['DB_TYPE'] == 'postgres':
-        cur.execute("UPDATE films SET title = %s, title_ru = %s, year = %s, description = %s WHERE id = %s;", 
+        cur.execute("UPDATE films SET title = %s, title_ru = %s, year = %s, description = %s WHERE id = %s;",
                     (film['title'], film['title_ru'], film['year'], film['description'], id))
     else:
-        cur.execute("UPDATE films SET title = ?, title_ru = ?, year = ?, description = ? WHERE id = ?;", 
+        cur.execute("UPDATE films SET title = ?, title_ru = ?, year = ?, description = ? WHERE id = ?;",
                     (film['title'], film['title_ru'], film['year'], film['description'], id))
-    
+
     db_close(conn, cur)
     return film
 
