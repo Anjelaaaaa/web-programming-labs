@@ -62,6 +62,7 @@ def get_film(id):
     else:
         cur.execute("SELECT * FROM films WHERE id = ?;", (id,))
         films = cur.fetchone()
+        return dict(films)
 
     db_close(conn, cur)
 
