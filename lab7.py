@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, current_app, jsonify
+from flask import Blueprint, render_template, request, current_app
 from datetime import datetime
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -62,7 +62,6 @@ def get_film(id):
     else:
         cur.execute("SELECT * FROM films WHERE id = ?;", (id,))
         films = cur.fetchone()
-        return jsonify(dict(films))
 
     db_close(conn, cur)
 
