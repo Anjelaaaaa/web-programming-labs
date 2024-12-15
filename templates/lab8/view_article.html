@@ -12,7 +12,7 @@
         <div class="center">Anonymous</div>
     {% endif %}
     <div class="articles knowledge2">
-        <h1 class="title {{ 'public' if article['is_public'] else 'favorite' }}">{{ article.title }}</h1>
+        <h1 class="title {{ 'public' if article.is_public else 'favorite' }}">{{ article.title }}</h1>
         <div>{{ article.article_text }}</div>
     </div>
     {% if login %}

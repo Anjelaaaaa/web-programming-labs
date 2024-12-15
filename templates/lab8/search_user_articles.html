@@ -26,7 +26,7 @@
             {% endif %}
             <ul>
                 {% for article in user_articles %}
-                    <a href="/lab8/articles/{{ article.id }}"><h2 class="title {{ 'public' if article['is_public'] else '' }}">{{ article.title }}</h2></a>
+                    <a href="/lab8/articles/{{ article.id }}"><h2 class="title {{ 'public' if article.is_public else '' }}">{{ article.title }}</h2></a>
                     <blockquote>{{ article.article_text[:100] }}...</blockquote>
                 {% endfor %}
             </ul>
