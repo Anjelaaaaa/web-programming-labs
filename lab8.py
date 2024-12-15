@@ -75,6 +75,8 @@ def login():
 @login_required
 def article_list():
     articles_list = articles.query.filter_by(login_id=current_user.id).all()
+    if not articles_list:
+        return render_template('lab8/articles.html', message='У вас пока нет ни одной статьи', login=current_user.login)
     return render_template('lab8/articles.html', articles=articles_list, login=current_user.login)
 
 
@@ -89,15 +91,17 @@ def logout():
 @login_required
 def create_article():
     if request.method == 'GET':
-        return render_template('lab8/create_article.html')
+        return render_template('lab8/create_article.html', login=current_user.login)
 
     title = request.form.get('title')
     article_text = request.form.get('article_text')
+    
+    is_public = request.form.get('is_public') is not None
 
     if title == '' or article_text == '':
         return render_template('lab8/create_article.html', error='Заполните все поля')
 
-    new_article = articles(title=title, article_text=article_text, login_id=current_user.id)
+    new_article = articles(title=title, article_text=article_text, login_id=current_user.id, is_public=is_public)
     db.session.add(new_article)
     db.session.commit()
     return redirect('/lab8/articles/')
@@ -112,16 +116,19 @@ def edit_article(article_id):
         return redirect('/lab8/articles/')
 
     if request.method == 'GET':
-        return render_template('lab8/edit_article.html', article=article)
+        return render_template('lab8/edit_article.html', article=article, title=article.title, article_text=article.article_text, is_public=article.is_public)
 
     title = request.form.get('title')
     article_text = request.form.get('article_text')
+
+    is_public = request.form.get('is_public') is not None
 
     if title == '' or article_text == '':
         return render_template('lab8/edit_article.html', article=article, error='Заполните все поля')
 
     article.title = title
     article.article_text = article_text
+    article.is_public = is_public
     db.session.commit()
     return redirect('/lab8/articles/')
 
@@ -135,4 +142,12 @@ def delete_article(article_id):
         db.session.delete(article)
         db.session.commit()
     return redirect('/lab8/articles/')
+
+
+@lab8.route('/lab8/public_articles', methods=['GET'])
+def public_articles():
+    if current_user.is_authenticated:
+        return render_template('lab8/public_articles.html', login=current_user.login, articles=articles_list)
+    articles_list = articles.query.filter_by(is_public=True).all()
+    return render_template('lab8/public_articles.html', articles=articles_list)
 
