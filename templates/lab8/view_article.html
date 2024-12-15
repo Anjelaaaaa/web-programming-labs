@@ -5,21 +5,23 @@
 
 {# основной контент: #}
 {% block main %}
-    <h1 class="header2 center">База знаний</h1>
+    <h1 class="header6 center">База знаний</h1>
     {% if login %}
         <div class="center">{{ login }}</div>
     {% else %}
         <div class="center">Anonymous</div>
     {% endif %}
-    <div class="center">
-        <div class="article article5"><a href="/lab8/login">Вход</a></div>
-        <div class="article article5"><a href="/lab8/register">Регистрация</a></div>
-        <div class="article article5 knowledge3"><a href="/lab8/articles">Список статей</a></div>
-        <div class="article article5"><a href="/lab8/create">Создать статью</a></div>
-        <div class="article article5"><a href="/lab8/public_articles">Публичные статьи</a></div>
+    <div class="articles knowledge2">
+        <h1 class="title {{ 'public' if article['is_public'] else 'favorite' }}">{{ article.title }}</h1>
+        <div>{{ article.article_text }}</div>
     </div>
-    <h1>{{ article.title }}</h1>
-    <div>{{ article.article_text }}</div>
-    <div>Автор: {{ article.login }}</div>
-    <a href="/lab8/articles/">Вернуться к списку статей</a>
+    {% if login %}
+        <div class="center">
+            <div class="article article4"><a href="/lab8/articles/">Перейти к списку статей</a></div>
+        </div>
+    {% else %}
+        <div class="center">
+            <div class="article article4"><a href="/lab8/public_articles">Вернуться к публичным статьям</a></div>
+        </div>
+    {% endif %}
 {% endblock %}

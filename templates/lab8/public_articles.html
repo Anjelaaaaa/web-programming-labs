@@ -21,15 +21,15 @@
     {% if articles %}
         <h1 class="header4 center">Публичные статьи</h1>
         <div class="articles knowledge5">
-            {% for article in articles %}
-                <h3 class="header4">Поиск по публичным статьям</h3>
-                <form method="get" action="/lab8/public_search" class="search-form">
-                    <input class="userinfo" type="text" name="q" placeholder="Поиск..." required>
-                    <button class="userinfo" type="submit">Поиск</button>
-                </form>
-                <a href="/lab8/articles/{{ article.id }}"><h2 class="public">{{ article.title }}</h2></a>
-                <blockquote>{{ article.article_text[:100] }}...</blockquote>
-            {% endfor %}
+        <h3 class="header4">Поиск по публичным статьям</h3>
+        <form method="get" action="/lab8/public_search" class="search-form">
+            <input class="userinfo" type="text" name="q" placeholder="Поиск..." required>
+            <button class="userinfo" type="submit">Поиск</button>
+        </form>
+        {% for article in articles %}
+            <a href="/lab8/articles/{{ article.id }}"><h2 class="public">{{ article.title }}</h2></a>
+            <blockquote>{{ article.article_text[:100] }}...</blockquote>
+        {% endfor %}
         </div>
     {% else %}
         <div class="list knowledge5">
