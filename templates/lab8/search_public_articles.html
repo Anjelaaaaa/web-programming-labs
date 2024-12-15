@@ -18,22 +18,20 @@
         <div class="article article7"><a href="/lab8/create">Создать статью</a></div>
         <div class="article article7 knowledge5"><a href="/lab8/public_articles">Публичные статьи</a></div>
     </div>
-    {% if articles %}
-        <h1 class="header4 center">Публичные статьи</h1>
-        <div class="articles knowledge5">
-            {% for article in articles %}
-                <h3 class="header4">Поиск по публичным статьям</h3>
-                <form method="get" action="/lab8/public_search" class="search-form">
-                    <input class="userinfo" type="text" name="q" placeholder="Поиск..." required>
-                    <button class="userinfo" type="submit">Поиск</button>
-                </form>
+    <h2 class="header4 center">Результаты поиска по публичным статьям</h2>
+    <div class="articles knowledge5">
+        {% if public_articles %}
+            {% if query %}
+                <h3 class="header4 center">Поиск по запросу: "{{ query }}"</h3>
+            {% endif %}
+            <ul>
+                {% for article in public_articles %}
                 <a href="/lab8/articles/{{ article.id }}"><h2 class="public">{{ article.title }}</h2></a>
                 <blockquote>{{ article.article_text[:100] }}...</blockquote>
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="list knowledge5">
-            <h2 class="header4 center">Публичных статей не найдено</h2>
-        </div>
-    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h2 class="header4 center forheader">Нет публичных статей, соответствующих этому запросу.</h2>
+        {% endif %}
+    </div>
 {% endblock %}
