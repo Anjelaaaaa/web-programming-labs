@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Выбор пола</h1>
+    <form method="post">
+        <label for="gender">Выберите ваш пол:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+        </select>
+        <input type="submit" value="Далее">
+    </form>
+{% endblock %}
