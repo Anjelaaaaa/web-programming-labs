@@ -76,18 +76,17 @@ def congratulation():
         if preference == 'вкусное':
             if sub_preference == 'шоколадное':
                 message += "коробка конфет."
-                image = url_for('static', filename='candy.jpg')  
+                image = 'lab9/candy.jpg'
             else: 
                 message += "вкусный торт."
-                image = url_for('static', filename='cake.jpg')  
+                image = 'lab9/cake.jpg'
         else:  
             if sub_preference == 'декоративное':
                 message += "елочные игрушки."
-                image = url_for('static', filename='decoration.jpg') 
+                image = 'lab9/decoration.jpg'
             else: 
                 message += "теплый свитер."
-                image = url_for('static', filename='sweater.jpg')
-
+                image = 'lab9/sweater.jpg'
     else:
         message = f"Поздравляю, {name}! Желаю тебе успехов и новых достижений. Надеюсь, что ты будешь наслаждаться жизнью. Вот твой подарок — "
 
