@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
+{% block lab %}  Лабораторная работа 9 {% endblock %}
+
 {% block main %}
-<h1>{{ message }}</h1>
-<img src="{{ url_for('static', filename=image) }}" alt="Gift Image">
+    <h1>{{ message }}</h1>
+    <img src="{{ url_for('static', filename=image) }}">
+    <a href="{{ url_for('lab9.reset') }}">Сбросить и начать заново</a>
 {% endblock %}
