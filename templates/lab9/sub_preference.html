@@ -3,21 +3,31 @@
 {% block lab %}  Лабораторная работа 9 {% endblock %}
 
 {% block main %}
-    <h1>Подбор предпочтений</h1>
-    <form method="post">
-        {% if request.args.get('preference') == 'вкусное' %}
-            <label for="sub_preference">Что-то шоколадное или мучное?</label>
-            <select id="sub_preference" name="sub_preference" required>
-                <option value="шоколадное">шоколадное</option>
-                <option value="мучное">мучное</option>
-            </select>
-        {% else %}
-            <label for="sub_preference">Что-то декоративное или практичное?</label>
-            <select id="sub_preference" name="sub_preference" required>
-                <option value="декоративное">декоративное</option>
-                <option value="практичное">практичное</option>
-            </select>
-        {% endif %}
-        <input type="submit" value="Далее">
-    </form>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/lab9/snowflakes.png');
+            background-size: 100%;
+        }
+    </style>
+    <h1 class="header13 center">Подбор предпочтений</h1>
+    <div class="list NY">
+        <form method="post">
+            {% if request.args.get('preference') == 'вкусное' %}
+                <label for="sub_preference">Что-то шоколадное или мучное?</label>
+                <select class="userinfo" id="sub_preference" name="sub_preference" required>
+                    <option value="шоколадное">шоколадное</option>
+                    <option value="мучное">мучное</option>
+                </select>
+            {% else %}
+                <label for="sub_preference">Что-то декоративное или практичное?</label>
+                <select class="userinfo" id="sub_preference" name="sub_preference" required>
+                    <option value="декоративное">декоративное</option>
+                    <option value="практичное">практичное</option>
+                </select>
+            {% endif %}
+            <input class="userinfo" type="submit" value="Далее">
+        </form>
+    </div>
 {% endblock %}

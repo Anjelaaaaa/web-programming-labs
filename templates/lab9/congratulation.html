@@ -3,7 +3,17 @@
 {% block lab %}  Лабораторная работа 9 {% endblock %}
 
 {% block main %}
-    <h1>{{ message }}</h1>
-    <img src="{{ url_for('static', filename=image) }}">
-    <a href="{{ url_for('lab9.reset') }}">Сбросить и начать заново</a>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/lab9/candies.jpg');
+            background-size: 100%;
+        }
+    </style>
+    <div class="list snow">
+        <h2 class="compliment center forheader">{{ message }}</h2>
+        <div class="center"><img class="present" src="{{ url_for('static', filename=image) }}"></div>
+    </div>
+    <div class="center"><div class="article"><a href="{{ url_for('lab9.reset') }}">Сбросить и начать заново</a></div></div>
 {% endblock %}

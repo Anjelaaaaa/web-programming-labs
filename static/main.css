@@ -125,6 +125,9 @@ div.menu:hover {
 .header12 {
     color: rgb(143, 197, 241);
 }
+.header13 {
+    color: rgb(155, 176, 221);
+}
 .forheader {
     line-height: 45px;
 }
@@ -653,4 +656,17 @@ div.phrase {
 }
 .addfilm {
     background-color: rgb(217, 228, 248);
+}
+.NY {
+    background-color: rgb(217, 217, 235);
+}
+.compliment {
+    color: rgb(151, 119, 78);
+}
+.present {
+    width: 300px;
+    border-radius: 10px;
+}
+.snow {
+    background-color: rgb(255, 255, 255);
 }

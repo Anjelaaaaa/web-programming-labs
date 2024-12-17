@@ -3,13 +3,23 @@
 {% block lab %}  Лабораторная работа 9 {% endblock %}
 
 {% block main %}
-    <h1>Выбор пола</h1>
-    <form method="post">
-        <label for="gender">Выберите ваш пол:</label>
-        <select id="gender" name="gender" required>
-            <option value="male">Мужской</option>
-            <option value="female">Женский</option>
-        </select>
-        <input type="submit" value="Далее">
-    </form>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/lab9/snowflakes.png');
+            background-size: 100%;
+        }
+    </style>
+    <h1 class="header13 center">Выбор пола</h1>
+    <div class="list NY">
+        <form method="post">
+            <label for="gender">Выберите ваш пол:</label>
+            <select class="userinfo" id="gender" name="gender" required>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
+            <input class="userinfo" type="submit" value="Далее">
+        </form>
+    </div>
 {% endblock %}
