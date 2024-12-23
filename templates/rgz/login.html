@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  РГЗ {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+    <h1 class="header3 center">База знаний</h1>
+    {% if login %}
+        <div class="center">{{ login }}</div>
+    {% else %}
+        <div class="center">Anonymous</div>
+    {% endif %}
+    <div class="center">
+        <div class="article article3 knowledge1"><a href="/rgz/login">Вход</a></div>
+        <div class="article article3"><a href="/rgz/register">Регистрация</a></div>
+        <div class="article article3"><a href="/rgz/articles">Список статей</a></div>
+        <div class="article article3"><a href="/rgz/create">Создать статью</a></div>
+        <div class="article article3"><a href="/rgz/public_articles">Публичные статьи</a></div>
+    </div>
+    <div class="list knowledge1">
+        <h1 class="header3 center">Вход в систему</h1>
+        <form action="/rgz/login" method="post">
+            <div>
+                <label>
+                    Логин: <input class="userinfo" type="text" name="login">
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Пароль: <input class="userinfo" type="password" name="password">
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="remember"> Запомнить меня
+                </label>
+            </div>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+
+            <div class="center"><button class="userinfo forbutton" type="submit">Вход</button></div>
+        </form>
+    </div>
+{% endblock %}
