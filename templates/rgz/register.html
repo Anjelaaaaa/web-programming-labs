@@ -12,11 +12,12 @@
         <div class="center">Anonymous</div>
     {% endif %}
     <div class="center">
-        <div class="article article2"><a href="/rgz/login">Вход</a></div>
-        <div class="article article2 knowledge"><a href="/rgz/register">Регистрация</a></div>
-        <div class="article article2"><a href="/rgz/articles">Список статей</a></div>
-        <div class="article article2"><a href="/rgz/create">Создать статью</a></div>
-        <div class="article article2"><a href="/rgz/public_articles">Публичные статьи</a></div>
+        <div class="article article6"><a href="/rgz/login">Вход</a></div>
+        <div class="article article6"><a href="/rgz/register">Регистрация</a></div>
+        <div class="article article6"><a href="/rgz/books">Список книг</a></div>
+        {% if current_user.login == 'Admin' %}
+            <div class="article article6 knowledge4"><a href="/rgz/add_book">Добавить книгу</a></div>
+        {% endif %}
     </div>
     {% if message %}
         <div class="list knowledge">

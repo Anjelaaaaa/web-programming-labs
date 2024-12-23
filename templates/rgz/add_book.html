@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{# номер лабораторной работы: #}
+{% block lab %}  РГЗ {% endblock %}
+
+{# основной контент: #}
+{% block main %}
+    <h1 class="header9">Каталог книг</h1>
+    {% if login %}
+        <div class="center">{{ login }}</div>
+    {% else %}
+        <div class="center">Anonymous</div>
+    {% endif %}
+    <div class="center">
+        <div class="article article6"><a href="/rgz/login">Вход</a></div>
+        <div class="article article6"><a href="/rgz/register">Регистрация</a></div>
+        <div class="article article6"><a href="/rgz/books">Список книг</a></div>
+        {% if current_user.login == 'Admin' %}
+            <div class="article article6 knowledge4"><a href="/rgz/add_book">Добавить книгу</a></div>
+        {% endif %}
+    </div>
+    
+    <div class="list knowledge4">
+        <h1 class="header5 center">Добавление книги</h1>
+        <form method="post">
+            <div>
+                <label>
+                    Название книги:
+                    <input class="userinfo" type="text" maxlength="100" name="title" value="{{ title or '' }}" required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Автор:
+                    <input class="userinfo" type="text" maxlength="50" name="author" value="{{ author or '' }}" required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Количество страниц:
+                    <input class="userinfo" type="number" name="pages" value="{{ pages or '' }}" required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Издательство:
+                    <input class="userinfo" type="text" maxlength="50" name="publisher" value="{{ publisher or '' }}" required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Обложка (URL):
+                    <input class="userinfo" type="text" maxlength="200" name="cover_image" value="{{ cover_image or '' }}">
+                </label>
+            </div>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+
+            <div class="center">
+                <button class="userinfo forbutton" type="submit">Добавить книгу</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -6,22 +6,28 @@ from flask_login import login_user, login_required, current_user, logout_user
 
 rgz = Blueprint('rgz', __name__)
 
+
 @rgz.route('/rgz/')
 def lab():
+    if current_user.is_authenticated:
+        return render_template('rgz/rgz.html', login=current_user.login)
     return render_template('rgz/rgz.html')
 
 
 @rgz.route('/rgz/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect('/rgz/')
+        return render_template('rgz/register.html', message='Вы не можете зарегистрироваться, находясь в аккаунте. Хотите выйти?', login=current_user.login)
     
     if request.method == 'POST':
         login_form = request.form['login']
         password_form = request.form['password']
 
-        if not login_form or not password_form:
-            return render_template('rgz/register.html', error='Заполните все поля')
+        if login_form == '':
+            return render_template('rgz/register.html', error='Заполните имя пользователя')
+
+        if password_form == '':
+            return render_template('rgz/register.html', error='Заполните пароль')
 
         login_exists = users.query.filter_by(login=login_form).first()
         if login_exists:
@@ -32,6 +38,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
+        login_user(new_user, remember=False)
         return redirect('/rgz/login')
 
     return render_template('rgz/register.html')
@@ -40,11 +47,17 @@ def register():
 @rgz.route('/rgz/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect('/rgz/')
+        return render_template('rgz/success_login.html', login=current_user.login)
     
     if request.method == 'POST':
         login_form = request.form['login']
         password_form = request.form['password']
+
+        if login_form == '':
+            return render_template('rgz/login.html', error='Заполните имя пользователя')
+
+        if password_form == '':
+            return render_template('rgz/login.html', error='Заполните пароль')
 
         user = users.query.filter_by(login=login_form).first()
         if user and check_password_hash(user.password, password_form):
@@ -63,8 +76,7 @@ def logout():
     return redirect('/rgz/')
 
 
-@rgz.route('/rgz/books/', methods=['GET'])
-@login_required
+@rgz.route('/rgz/books', methods=['GET'])
 def book_list():
     page = request.args.get('page', 1, type=int)
     title_filter = request.args.get('title')
@@ -73,29 +85,31 @@ def book_list():
     pages_max = request.args.get('pages_max', type=int)
     publisher_filter = request.args.get('publisher')
 
-    query = Book.query
+    query = books.query
 
     if title_filter:
-        query = query.filter(Book.title.ilike(f'%{title_filter}%'))
+        query = query.filter(books.title.ilike(f'%{title_filter}%'))
     if author_filter:
-        query = query.filter(Book.author.ilike(f'%{author_filter}%'))
+        query = query.filter(books.author.ilike(f'%{author_filter}%'))
     if pages_min is not None:
-        query = query.filter(Book.pages >= pages_min)
+        query = query.filter(books.pages >= pages_min)
     if pages_max is not None:
-        query = query.filter(Book.pages <= pages_max)
+        query = query.filter(books.pages <= pages_max)
     if publisher_filter:
-        query = query.filter(Book.publisher.ilike(f'%{publisher_filter}%'))
+        query = query.filter(books.publisher.ilike(f'%{publisher_filter}%'))
 
-    books = query.paginate(page, per_page=20)
+    paginated_books = query.paginate(page=page, per_page=20, error_out=False)
 
-    return render_template('rgz/book_list.html', books=books)
+    if current_user.is_authenticated:
+        return render_template('rgz/book_list.html', books=paginated_books, login=current_user.login)
+    return render_template('rgz/book_list.html', books=paginated_books)
 
 
-@rgz.route('/rgz/books/add', methods=['GET', 'POST'])
+@rgz.route('/rgz/add_book', methods=['GET', 'POST'])
 @login_required
 def add_book():
     if current_user.login != 'Admin':
-        return redirect('/rgz/books/')
+        return redirect('/rgz/books')
 
     if request.method == 'POST':
         title = request.form['title']
@@ -104,21 +118,21 @@ def add_book():
         publisher = request.form['publisher']
         cover_image = request.form['cover_image']
 
-        new_book = Book(title=title, author=author, pages=pages, publisher=publisher, cover_image=cover_image)
+        new_book = books(title=title, author=author, pages=pages, publisher=publisher, cover_image=cover_image)
         db.session.add(new_book)
         db.session.commit()
-        return redirect('/rgz/books/')
+        return redirect('/rgz/books')
 
-    return render_template('rgz/add_book.html')
+    return render_template('rgz/add_book.html', login=current_user.login)
 
 
-@rgz.route('/rgz/books/edit/<int:book_id>', methods=['GET', 'POST'])
+@rgz.route('/rgz/edit_book/<int:book_id>', methods=['GET', 'POST'])
 @login_required
 def edit_book(book_id):
     if current_user.login != 'Admin':
-        return redirect('/rgz/books/')
+        return redirect('/rgz/books')
 
-    book = Book.query.get_or_404(book_id)
+    book = books.query.get(book_id)
 
     if request.method == 'POST':
         book.title = request.form['title']
@@ -128,18 +142,19 @@ def edit_book(book_id):
         book.cover_image = request.form['cover_image']
 
         db.session.commit()
-        return redirect('/rgz/books/')
+        return redirect('/rgz/books')
 
-    return render_template('rgz/edit_book.html', book=book)
+    return render_template('rgz/edit_book.html', book=book, login=current_user.login)
 
 
-@rgz.route('/rgz/books/delete/<int:book_id>', methods=['POST'])
+@rgz.route('/rgz/delete_book/<int:book_id>', methods=['POST'])
 @login_required
 def delete_book(book_id):
     if current_user.login != 'Admin':
-        return redirect('/rgz/books/')
+        return redirect('/rgz/books')
 
-    book = Book.query.get_or_404(book_id)
+    book = books.query.get(book_id)
     db.session.delete(book)
     db.session.commit()
-    return redirect('/rgz/books/')
+    return redirect('/rgz/books')
+

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {# номер лабораторной работы: #}
-{% block lab %} РГЗ {% endblock %}
+{% block lab %}  РГЗ {% endblock %}
 
 {# основной контент: #}
 {% block main %}
-    <h1 class="header9 center">База знаний</h1>
+    <h1 class="header3 center">База знаний</h1>
     {% if login %}
         <div class="center">{{ login }}</div>
     {% else %}
@@ -19,4 +19,9 @@
             <div class="article article6 knowledge4"><a href="/rgz/add_book">Добавить книгу</a></div>
         {% endif %}
     </div>
+    <div class="list knowledge1">
+        <h1 class="header3 center">Добро пожаловать, {{ login }}!</h1>
+        <h3 class="welcome center">Вы успешно вошли в свой аккаунт</h3>
+    </div>
+    <div class="center"><div class="article article3"><a href="/rgz/logout">Выйти</a></div></div>
 {% endblock %}

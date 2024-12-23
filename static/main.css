@@ -628,6 +628,9 @@ div.phrase {
 .knowledge6 {
     background-color: rgb(248, 245, 217);
 }
+.knowledge7 {
+    background-color: rgb(192, 207, 255);
+}
 .forbutton {
     padding: 10px;
 }
@@ -669,4 +672,27 @@ div.phrase {
 }
 .snow {
     background-color: rgb(255, 255, 255);
+}
+.cover {
+    width: 200px;
+}
+.booklogo {
+    text-shadow:
+    1px 2px rgba(160, 168, 194, 0.527),
+    1px 3px rgba(160, 162, 194, 0.527), 
+    1px 4px rgba(160, 166, 194, 0.527),
+    1px 5px 6px rgba(129, 137, 173, 0.527),
+    1px 6px 7px rgba(129, 137, 173, 0.527);
+    color: rgb(86, 135, 241);
+}
+.booklist {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 100px;
+}
+.booklink {
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    margin-right: 10px;
 }
