@@ -5,23 +5,30 @@
 
 {# основной контент: #}
 {% block main %}
-    <h1 class="header3 center">База знаний</h1>
-    {% if login %}
-        <div class="center">{{ login }}</div>
-    {% else %}
-        <div class="center">Anonymous</div>
-    {% endif %}
     <div class="center">
-        <div class="article article6"><a href="/rgz/login">Вход</a></div>
-        <div class="article article6"><a href="/rgz/register">Регистрация</a></div>
-        <div class="article article6"><a href="/rgz/books">Список книг</a></div>
-        {% if current_user.login == 'Admin' %}
-            <div class="article article6 knowledge4"><a href="/rgz/add_book">Добавить книгу</a></div>
-        {% endif %}
+        <div class="booklist">
+            <h1 class="booklogo">Каталог книг</h1>
+            {% if login %}
+                <div>{{ login }}</div>
+            {% else %}
+                <div>Anonymous</div>
+            {% endif %}
+        </div>
+        <div class="booklist">
+            <div class="booklink bookactive"><a class="booklinks" href="/rgz/login">Вход</a></div>
+            <div class="booklink"><a class="booklinks" href="/rgz/register">Регистрация</a></div>
+            <div class="booklink"><a class="booklinks" href="/rgz/books">Список книг</a></div>
+            {% if current_user.login == 'Admin' %}
+                <div class="booklink"><a class="booklinks" href="/rgz/add_book">Добавить книгу</a></div>
+            {% endif %}
+        </div>
+        <div class="booklist">
+            <img class="bookimg" src="{{ url_for('static', filename='rgz/book.png') }}">
+        </div>
     </div>
-    <div class="list knowledge1">
-        <h1 class="header3 center">Добро пожаловать, {{ login }}!</h1>
-        <h3 class="welcome center">Вы успешно вошли в свой аккаунт</h3>
+    <div class="openbook center">
+        <h2 class="booktext">Добро пожаловать, {{ login }}!</h2>
+        <h3 class="booktext">Вы успешно вошли в свой аккаунт.</h3>
     </div>
-    <div class="center"><div class="article article3"><a href="/rgz/logout">Выйти</a></div></div>
+    <div class="center"><div class="booklink bookactive"><a class="booklinks" href="/rgz/logout">Выйти</a></div></div>
 {% endblock %}

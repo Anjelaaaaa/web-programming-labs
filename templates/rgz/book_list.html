@@ -5,48 +5,57 @@
 
 {# основной контент: #}
 {% block main %}
-    <h1 class="header3 center">База знаний</h1>
-    {% if login %}
-        <div class="center">{{ login }}</div>
-    {% else %}
-        <div class="center">Anonymous</div>
-    {% endif %}
-    
     <div class="center">
-        <div class="article article6"><a href="/rgz/login">Вход</a></div>
-        <div class="article article6"><a href="/rgz/register">Регистрация</a></div>
-        <div class="article article6"><a href="/rgz/books">Список книг</a></div>
-        {% if current_user.login == 'Admin' %}
-            <div class="article article6 knowledge4"><a href="/rgz/add_book">Добавить книгу</a></div>
-        {% endif %}
+        <div class="booklist">
+            <h1 class="booklogo">Каталог книг</h1>
+            {% if login %}
+                <div>{{ login }}</div>
+            {% else %}
+                <div>Anonymous</div>
+            {% endif %}
+        </div>
+        <div class="booklist">
+            <div class="booklink"><a class="booklinks" href="/rgz/login">Вход</a></div>
+            <div class="booklink"><a class="booklinks" href="/rgz/register">Регистрация</a></div>
+            <div class="booklink bookactive"><a class="booklinks" href="/rgz/books">Список книг</a></div>
+            {% if current_user.login == 'Admin' %}
+                <div class="booklink"><a class="booklinks" href="/rgz/add_book">Добавить книгу</a></div>
+            {% endif %}
+        </div>
+        <div class="booklist">
+            <img class="bookimg" src="{{ url_for('static', filename='rgz/book.png') }}">
+        </div>
+    </div>
+    <div class="center">
+        <form method="get" action="{{ url_for('rgz.book_list') }}">
+            <input class="userinfo bookinput" type="text" name="title" placeholder="Название книги" value="{{ request.args.get('title') or '' }}">
+            <input class="userinfo bookinput" type="text" name="author" placeholder="Автор" value="{{ request.args.get('author') or '' }}">
+            <input class="userinfo bookinput" type="text" name="publisher" placeholder="Издательство" value="{{ request.args.get('publisher') or '' }}">
+            <input class="userinfo bookinput" type="number" name="pages_min" placeholder="Мин. страницы" value="{{ request.args.get('pages_min') }}">
+            <input class="userinfo bookinput" type="number" name="pages_max" placeholder="Макс. страницы" value="{{ request.args.get('pages_max') }}">
+            <input class="userinfo bookbutton" type="submit" value="Фильтровать">
+        </form>
     </div>
 
-    <form method="get" action="{{ url_for('rgz.book_list') }}">
-        <input type="text" name="title" placeholder="Название книги" value="{{ request.args.get('title') or '' }}">
-        <input type="text" name="author" placeholder="Автор" value="{{ request.args.get('author') or '' }}">
-        <input type="text" name="publisher" placeholder="Издательство" value="{{ request.args.get('publisher') or '' }}">
-        <input type="number" name="pages_min" placeholder="Мин. страницы" value="{{ request.args.get('pages_min') }}">
-        <input type="number" name="pages_max" placeholder="Макс. страницы" value="{{ request.args.get('pages_max') }}">
-        <input type="submit" value="Фильтровать">
-    </form>
-
-    <ul>
-        {% for book in books %}
-            <li>
-                <img class="cover" src="{{ book.cover_image }}">
-                {{ book.title }} от автора {{ book.author }} ({{ book.pages }} страниц) - {{ book.publisher }}
-                
-                {% if current_user.login == 'Admin' %}
-                    <form action="{{ url_for('rgz.delete_book', book_id=book.id) }}" method="post" style="display:inline;">
-                        <button type="submit">Удалить</button>
-                    </form>
-                    <a href="{{ url_for('rgz.edit_book', book_id=book.id) }}">Редактировать</a>
-                {% endif %}
-            </li>
-        {% else %}
-            <li>Нет книг для отображения.</li>
-        {% endfor %}
-    </ul>
+    {% for book in books %}
+        <div class="bookcover">
+            <div><img class="cover" src="{{ book.cover_image }}"></div>
+            <div class="lineheight textbook">
+                <span class="bookname">{{ book.title }}</span><br>
+                Автор: {{ book.author }}<br>
+                Количество страниц: {{ book.pages }}<br>
+                Издательство: {{ book.publisher }}
+            </div>
+            {% if current_user.login == 'Admin' %}
+                <form action="{{ url_for('rgz.delete_book', book_id=book.id) }}" method="post" style="display:inline;">
+                    <button class="userinfo bookbutton" type="submit">Удалить</button>
+                </form>
+                <a class="edit bookbutton bookdecoration" href="{{ url_for('rgz.edit_book', book_id=book.id) }}">Редактировать</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <h2 class="center bookname">Нет книг для отображения.</h2>
+    {% endfor %}
 
     {% if books.has_prev %}
         <a href="{{ url_for('rgz.book_list', page=books.prev_num) }}">Назад</a>
