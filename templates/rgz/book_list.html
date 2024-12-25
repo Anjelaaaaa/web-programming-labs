@@ -28,12 +28,24 @@
     </div>
     <div class="center">
         <form method="get" action="{{ url_for('rgz.book_list') }}">
-            <input class="userinfo bookinput" type="text" name="title" placeholder="Название книги" value="{{ request.args.get('title') or '' }}">
-            <input class="userinfo bookinput" type="text" name="author" placeholder="Автор" value="{{ request.args.get('author') or '' }}">
-            <input class="userinfo bookinput" type="text" name="publisher" placeholder="Издательство" value="{{ request.args.get('publisher') or '' }}">
-            <input class="userinfo bookinput" type="number" name="pages_min" placeholder="Мин. страницы" value="{{ request.args.get('pages_min') }}">
-            <input class="userinfo bookinput" type="number" name="pages_max" placeholder="Макс. страницы" value="{{ request.args.get('pages_max') }}">
-            <input class="userinfo bookbutton" type="submit" value="Фильтровать">
+            <div class="inline">
+                <input class="userinfo bookinput" type="text" name="title" placeholder="Название книги" value="{{ request.args.get('title') or '' }}">
+            </div>
+            <div class="inline">
+                <input class="userinfo bookinput" type="text" name="author" placeholder="Автор" value="{{ request.args.get('author') or '' }}">
+            </div>
+            <div class="inline">
+                <input class="userinfo bookinput" type="text" name="publisher" placeholder="Издательство" value="{{ request.args.get('publisher') or '' }}">
+            </div>
+            <div class="inline">
+                <input class="userinfo bookinput" type="number" name="pages_min" placeholder="Мин. страницы" value="{{ request.args.get('pages_min') }}">
+            </div>
+            <div class="inline">
+                <input class="userinfo bookinput" type="number" name="pages_max" placeholder="Макс. страницы" value="{{ request.args.get('pages_max') }}">
+            </div>
+            <div class="inline">
+                <input class="userinfo bookbutton" type="submit" value="Фильтровать">
+            </div>
         </form>
     </div>
 
