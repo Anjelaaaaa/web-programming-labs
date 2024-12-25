@@ -32,35 +32,35 @@
             <div>
                 <label>
                     Название книги:
-                    <input class="userinfo" type="text" maxlength="100" name="title" value="{{ book.title }}">
+                    <input class="userinfo" type="text" maxlength="100" name="title" value="{{ book.title }}" required>
                 </label>
             </div>
 
             <div>
                 <label>
                     Автор:
-                    <input class="userinfo" type="text" maxlength="50" name="author" value="{{ book.author }}">
+                    <input class="userinfo" type="text" maxlength="50" name="author" value="{{ book.author }}" required>
                 </label>
             </div>
 
             <div>
                 <label>
                     Количество страниц:
-                    <input class="userinfo" type="number" name="pages" value="{{ book.pages }}">
+                    <input class="userinfo" type="number" name="pages" value="{{ book.pages }}" required>
                 </label>
             </div>
 
             <div>
                 <label>
                     Издательство:
-                    <input class="userinfo" type="text" maxlength="50" name="publisher" value="{{ book.publisher }}">
+                    <input class="userinfo" type="text" maxlength="50" name="publisher" value="{{ book.publisher }}" required>
                 </label>
             </div>
 
             <div>
                 <label>
                     Обложка (URL):
-                    <input class="userinfo" type="text" maxlength="200" name="cover_image" value="{{ book.cover_image }}">
+                    <input class="userinfo" type="text" maxlength="200" name="cover_image" value="{{ book.cover_image }}" required>
                 </label>
             </div>
 

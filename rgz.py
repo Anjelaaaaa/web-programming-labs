@@ -118,10 +118,6 @@ def add_book():
         publisher = request.form['publisher']
         cover_image = request.form['cover_image']
 
-        if not title or not author or not pages or not publisher or not cover_image:
-            error_message = "Все поля должны быть заполнены"
-            return render_template('rgz/add_book.html', login=current_user.login, error=error_message)
-
         new_book = books(title=title, author=author, pages=pages, publisher=publisher, cover_image=cover_image)
         db.session.add(new_book)
         db.session.commit()
@@ -144,10 +140,6 @@ def edit_book(book_id):
         book.pages = request.form['pages']
         book.publisher = request.form['publisher']
         book.cover_image = request.form['cover_image']
-
-        if not title or not author or not pages or not publisher or not cover_image:
-            error_message = "Все поля должны быть заполнены"
-            return render_template('rgz/edit_book.html', login=current_user.login, error=error_message)
 
         db.session.commit()
         return redirect('/rgz/books')
