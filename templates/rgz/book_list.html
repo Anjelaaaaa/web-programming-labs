@@ -54,13 +54,17 @@
             {% endif %}
         </div>
     {% else %}
-        <h2 class="center bookname">Нет книг для отображения.</h2>
+        <h2 class="center bookname">Нет книг для отображения</h2>
     {% endfor %}
 
     {% if books.has_prev %}
-        <a href="{{ url_for('rgz.book_list', page=books.prev_num) }}">Назад</a>
+        <div class="center">
+            <a class="edit bookbutton bookdecoration" href="{{ url_for('rgz.book_list', page=books.prev_num) }}">Назад</a>
+        </div>
     {% endif %}
     {% if books.has_next %}
-        <a href="{{ url_for('rgz.book_list', page=books.next_num) }}">Далее</a>
+        <div class="center">
+            <a class="edit bookinput bookdecoration" href="{{ url_for('rgz.book_list', page=books.next_num) }}">Далее</a>
+        </div>
     {% endif %}
 {% endblock %}

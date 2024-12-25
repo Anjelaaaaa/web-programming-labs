@@ -62,7 +62,7 @@ def login():
         user = users.query.filter_by(login=login_form).first()
         if user and check_password_hash(user.password, password_form):
             login_user(user)
-            return redirect('/rgz/')
+            return redirect('/rgz/login')
 
         return render_template('rgz/login.html', error='Неверный логин или пароль')
 
