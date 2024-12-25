@@ -70,12 +70,12 @@
     {% endfor %}
 
     {% if books.has_prev %}
-        <div class="center inline">
+        <div class="center1 inline">
             <a class="edit bookbutton bookdecoration" href="{{ url_for('rgz.book_list', page=books.prev_num) }}">Назад</a>
         </div>
     {% endif %}
     {% if books.has_next %}
-        <div class="center inline">
+        <div class="center1 inline">
             <a class="edit bookinput bookdecoration" href="{{ url_for('rgz.book_list', page=books.next_num) }}">Далее</a>
         </div>
     {% endif %}
